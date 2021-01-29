@@ -109,14 +109,10 @@ public class Cards {
 
 	//add random number 0-13 8 times to a integer array list to simulate card hand
 	public ArrayList<Integer> createHand(ArrayList<Integer> cardHand){
-		cardHand.add(randShuffle());
-		cardHand.add(randShuffle());
-		cardHand.add(randShuffle());
-		cardHand.add(randShuffle());
-		cardHand.add(randShuffle());
-		cardHand.add(randShuffle());
-		cardHand.add(randShuffle());
-		cardHand.add(randShuffle());
+		
+            for(int i = 0; i < 8; i++){
+            cardHand.add(randShuffle());
+            }	
 		return cardHand;
 	}
 
