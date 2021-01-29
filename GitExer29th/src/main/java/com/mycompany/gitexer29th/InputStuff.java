@@ -57,4 +57,19 @@ public class InputStuff {
 
 		return userNum;
 	}
-}
+    
+        public int validateBwRange(int target){
+        boolean flag = true; 
+        InputStuff input = new InputStuff();
+        while(flag){
+            System.out.println("Notice: Cards in a standard deck range from 1-13");
+            target = input.promptIntUser(new Scanner(System.in));
+            if(target >= 1 && target <= 13){
+                flag = false; 
+                return target;
+            }
+        } 
+        return target; 
+        }    
+        
+}//end class
