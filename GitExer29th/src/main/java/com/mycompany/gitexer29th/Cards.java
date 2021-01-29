@@ -18,7 +18,7 @@ public class Cards {
     public Cards() {
     }
 
-
+    private ArrayStuff arrayStuff = new ArrayStuff();
    
     
     public int[][] recordTypes(int card, int[][] countHolder){
@@ -195,5 +195,7 @@ public class Cards {
             cardHand.add(value);
            return cardHand;
         }
+        
+    
 
 }//End class 
