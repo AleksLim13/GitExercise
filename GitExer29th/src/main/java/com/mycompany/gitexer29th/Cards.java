@@ -19,6 +19,7 @@ public class Cards {
     }
 
     private ArrayStuff arrayStuff = new ArrayStuff();
+    Cards deck = new Cards();
    
     
     public int[][] recordTypes(int card, int[][] countHolder){
@@ -184,8 +185,16 @@ public class Cards {
             return dupesHolder; 
         }
         
-        public ArrayList<Integer> deleteCard(ArrayList<Integer> cardHand, int value){
+        public ArrayList<Integer> checkHandAndRemove(ArrayList<Integer> cardHand, ArrayList<Integer> dupesHolder){
+            
+            if(dupesHolder != null){
+                cardHand = deck.deleteCard(cardHand, dupesHolder.get(0));
+            }
+            return cardHand; 
+        }
         
+        public ArrayList<Integer> deleteCard(ArrayList<Integer> cardHand, int value){
+            
             cardHand.remove(value);
            return cardHand;
         }
