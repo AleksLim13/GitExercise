@@ -25,7 +25,7 @@ public class Start {
     
     public static void main(String[] args){
         //begin statements
-        Cards cardStuff = new Cards();
+    Cards cardStuff = new Cards();
     ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<Integer>()); 
     Start game = new Start();
     ArrayList<Integer> cardHand = game.arrayStuff.sortListAsc(initialHand);
