@@ -7,6 +7,7 @@ package com.mycompany.gitexer29th;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A class to model Student Objects each student has: a name (first an last
@@ -19,15 +20,14 @@ public class Player {
     private String name;
     private int[][] scoreBoard;
     private ArrayList<Integer> hand;
-    private int[] books;
+    private int[] book;
+    private HashMap<Integer, Integer> books = new HashMap<>();
     private LocalDate date;
 
     /**
      * @return the name
      */
-    public String getName() {
-        return name;
-    }
+    
 
     /**
      * @param givenName the name to set
@@ -36,21 +36,46 @@ public class Player {
         name = givenName;
     }
 
-    public ArrayList<Integer> getHand() {
-        return hand;
+   
+
+    public void setHand(ArrayList<Integer> newHand) {
+        this.hand = newHand;
     }
 
+    public void setScoreBoard(int[][] newScoreBoard) {
+        this.scoreBoard = newScoreBoard;
+    }
+    
+    
+    public void setBook(int[] newBook){
+        this.book = newBook; 
+    }
+    
+    public void setBooks(HashMap<Integer, Integer> newBooks){
+        this.books = newBooks; 
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+     public ArrayList<Integer> getHand() {
+        return hand;
+    }
     public int[][] getScoreBoard() {
         return scoreBoard;
     }
-    
-    
-    public int[] getBooks(){
-    return books; 
+
+    public int[] getBook() {
+        return book;
     }
-    
-    public LocalDate getDate(){
-    return date; 
+
+    public HashMap<Integer, Integer> getBooks() {
+        return books;
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
 }
