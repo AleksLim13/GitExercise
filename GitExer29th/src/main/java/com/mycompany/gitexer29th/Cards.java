@@ -173,5 +173,27 @@ public class Cards {
 		 */
 		printScoreBoard(checkedHand);
 	}
+       
+        public ArrayList<Integer> cardDecision(int[][] scoreBoard, ArrayList<Integer> dupesHolder){
+        
+            for(int i = 0; i < 13; i++){
+                if(scoreBoard[i][1] > 1){
+                    dupesHolder.add(scoreBoard[i][0]);
+                }
+            }
+            return dupesHolder; 
+        }
+        
+        public ArrayList<Integer> deleteCard(ArrayList<Integer> cardHand, int value){
+        
+            cardHand.remove(value);
+           return cardHand;
+        }
+        
+        public ArrayList<Integer> addCard(ArrayList<Integer> cardHand, int value){
+        
+            cardHand.add(value);
+           return cardHand;
+        }
 
 }//End class 
