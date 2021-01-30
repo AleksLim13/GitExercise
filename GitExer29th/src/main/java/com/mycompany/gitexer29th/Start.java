@@ -27,6 +27,14 @@ public class Start {
     
     public static void main(String[] args) {
         //begin statements
+        
+    }    
+    
+    
+    public void test01(){
+        //This run does: creates hand, checks hand for duplicates
+        //and creates a list of stuff to ask for. 
+        
         ArrayStuff arrayStuff = new ArrayStuff();
         Cards cardStuff = new Cards();
         ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<Integer>());        
@@ -41,7 +49,7 @@ public class Start {
         ArrayList<Integer> desirableList = cardStuff.cardDecision(checkedHand, new ArrayList<Integer>());
         System.out.println("What to ask for...");
         cardStuff.printHand(desirableList);
-    }    
+    }
     
  
     
