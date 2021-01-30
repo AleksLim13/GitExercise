@@ -155,7 +155,7 @@ public class Cards {
 
   
     public ArrayList<Integer> cardDecision(int[][] scoreBoard, ArrayList<Integer> dupesHolder) {
-
+           //Rows [i] and columns [j]
         for (int i = 0; i < 13; i++) {
             if (scoreBoard[i][1] > 1) {
                 dupesHolder.add(scoreBoard[i][0]);
