@@ -15,6 +15,7 @@ import java.util.HashMap;
  *
  * @author dancye May 7, 2018
  */
+
 public class Player {
 
     private String name;
