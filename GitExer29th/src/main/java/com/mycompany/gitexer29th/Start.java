@@ -38,7 +38,7 @@ public class Start {
         int[][] checkedHand = cardStuff.checkHand(countHolder, cardHand);
         System.out.println("Your scoreboard...");
         cardStuff.printScoreBoard(checkedHand);
-        ArrayList<Integer> desirableList = cardStuff.cardDecision(checkedHand, cardHand);
+        ArrayList<Integer> desirableList = cardStuff.cardDecision(checkedHand, new ArrayList<Integer>());
         System.out.println("What to ask for...");
         cardStuff.printHand(desirableList);
     }    
