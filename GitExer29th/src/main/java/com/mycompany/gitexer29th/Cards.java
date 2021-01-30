@@ -74,20 +74,10 @@ public class Cards {
     }
 
     public void printScoreBoard(int[][] scoreBoard) {
-        System.out.println(scoreBoard[0][0] + "'s : " + scoreBoard[0][1]);
-        System.out.println(scoreBoard[1][0] + "'s : " + scoreBoard[1][1]);
-        System.out.println(scoreBoard[2][0] + "'s : " + scoreBoard[2][1]);
-        System.out.println(scoreBoard[3][0] + "'s : " + scoreBoard[3][1]);
-        System.out.println(scoreBoard[4][0] + "'s : " + scoreBoard[4][1]);
-        System.out.println(scoreBoard[5][0] + "'s : " + scoreBoard[5][1]);
-        System.out.println(scoreBoard[6][0] + "'s : " + scoreBoard[6][1]);
-        System.out.println(scoreBoard[7][0] + "'s : " + scoreBoard[7][1]);
-        System.out.println(scoreBoard[8][0] + "'s : " + scoreBoard[8][1]);
-        System.out.println(scoreBoard[9][0] + "'s : " + scoreBoard[9][1]);
-        System.out.println(scoreBoard[10][0] + "'s : " + scoreBoard[10][1]);
-        System.out.println(scoreBoard[11][0] + "'s : " + scoreBoard[11][1]);
-        System.out.println(scoreBoard[12][0] + "'s : " + scoreBoard[12][1]);
-
+        
+        for(int i = 0; i < 13; i++){
+             System.out.println(scoreBoard[i][0] + "'s : " + scoreBoard[i][1]);
+        }
     }
 
     public void printCount(int[] countHolder) {
@@ -118,20 +108,10 @@ public class Cards {
     public int[][] createScoreBoard() {
         //array_name[row_index][column_index] = value;
         int[][] scoreBoard = new int[13][2];
-        scoreBoard[0][0] = 1;
-        scoreBoard[1][0] = 2;
-        scoreBoard[2][0] = 3;
-        scoreBoard[3][0] = 4;
-        scoreBoard[4][0] = 5;
-        scoreBoard[5][0] = 6;
-        scoreBoard[6][0] = 7;
-        scoreBoard[7][0] = 8;
-        scoreBoard[8][0] = 9;
-        scoreBoard[9][0] = 10;
-        scoreBoard[10][0] = 11;
-        scoreBoard[11][0] = 12;
-        scoreBoard[12][0] = 13;
-
+       
+        for(int i = 0; i < 13; i++){
+            scoreBoard[i][0] = i + 1;
+        }
         return scoreBoard;
     }
 
