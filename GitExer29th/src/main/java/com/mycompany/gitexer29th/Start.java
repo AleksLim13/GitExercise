@@ -9,8 +9,8 @@ C:\Users\aleks\Documents\NetBeansProjects
  */
 package com.mycompany.gitexer29th;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+
 
 /**
  *
@@ -18,8 +18,8 @@ import java.util.ArrayList;
  */
 public class Start {
 
-    private LocalDate date;    
-    private ArrayStuff arrayStuff = new ArrayStuff();
+    
+   
 
     public Start() {
         
@@ -27,12 +27,13 @@ public class Start {
     
     public static void main(String[] args) {
         //begin statements
+        ArrayStuff arrayStuff = new ArrayStuff();
         Cards cardStuff = new Cards();
         ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<Integer>());        
-        Start game = new Start();
-        ArrayList<Integer> cardHand = game.arrayStuff.sortListAsc(initialHand);
+        ArrayList<Integer> cardHand = arrayStuff.sortListAsc(initialHand);
         System.out.println("Your hand...");
         cardStuff.printHand(cardHand);
+        System.out.println(" ");
         int[][] countHolder = cardStuff.createScoreBoard();
         int[][] checkedHand = cardStuff.checkHand(countHolder, cardHand);
         System.out.println("Your scoreboard...");
@@ -40,11 +41,8 @@ public class Start {
         ArrayList<Integer> desirableList = cardStuff.cardDecision(checkedHand, cardHand);
         System.out.println("What to ask for...");
         cardStuff.printHand(desirableList);
-        
     }    
     
-    public LocalDate getDate() {
-        return LocalDate.now();
-    }
+ 
     
 }
