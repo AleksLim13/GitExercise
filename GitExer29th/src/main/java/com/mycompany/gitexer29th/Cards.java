@@ -155,23 +155,7 @@ public class Cards {
         return cardHand;
     }
 
-    public void testProgram() {
-        ArrayList<Integer> testList = new ArrayList<Integer>();
-        ArrayList<Integer> cardHand = createHand(testList);
-
-        int[][] countHolder = createScoreBoard();
-        printHand(cardHand);
-        System.out.println(" ");
-        System.out.println("---------------------------");
-        int[][] checkedHand = checkHand(countHolder, cardHand);//Woo Hoo! You did it...Woo Hoo * 2.
-        /*
-			//3 times so far problems: where I'm creating objects or variables.
-
-		 *
-         */
-        printScoreBoard(checkedHand);
-    }
-
+  
     public ArrayList<Integer> cardDecision(int[][] scoreBoard, ArrayList<Integer> dupesHolder) {
 
         for (int i = 0; i < 13; i++) {
