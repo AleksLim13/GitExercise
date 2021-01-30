@@ -99,9 +99,9 @@ public class ArrayStuff {
         if (myArray == null) {
             return -1;
         }
-        int ssize = myArray.length;
+        int size = myArray.length;
         int i = 0;
-        while (i < ssize) {
+        while (i < size) {
             if (myArray[i] == tValue) {
                 return i;
             } else {
