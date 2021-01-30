@@ -19,9 +19,7 @@ public class Cards {
     public Cards() {
     }
 
-    private ArrayStuff arrayStuff = new ArrayStuff();
-    Cards deck = new Cards();
-    private InputStuff input = new InputStuff();
+   
 
     public int[][] recordTypes(int card, int[][] countHolder) {
 
@@ -167,9 +165,9 @@ public class Cards {
     }
 
     public ArrayList<Integer> checkHandAndRemove(ArrayList<Integer> cardHand, ArrayList<Integer> dupesHolder) {
-
+        
         if (dupesHolder != null) {
-            cardHand = deck.deleteCard(cardHand, dupesHolder.get(0));
+            cardHand = deleteCard(cardHand, dupesHolder.get(0));
         }
         return cardHand;
     }
@@ -186,9 +184,9 @@ public class Cards {
         return cardHand;
     }
 
-    public int askForACard(int target){
+    public int askForACard(int target, InputStuff input){
         boolean flag = true; 
-        InputStuff input = new InputStuff();
+     
         while(flag){
             System.out.println("Notice: Cards in a standard deck range from 1-13");
             target = input.promptIntUser(new Scanner(System.in));
