@@ -10,5 +10,7 @@ package com.mycompany.gitexer29th;
  * @author aleks
  */
 public class TurnTaker {
+    public TurnTaker(){}
+    
     
 }
