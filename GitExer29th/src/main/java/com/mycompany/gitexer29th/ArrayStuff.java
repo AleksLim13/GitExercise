@@ -54,13 +54,7 @@ public class ArrayStuff {
         return max;
     }
     
-    public static void formatter(){
-        System.out.println(" ");
-        System.out.println(" ");
-        System.out.println("_______________________");
-        System.out.println(" ");
-        System.out.println(" ");
-    }
+    
 
     //returns an array that is the reversal of another array 
     public static int[] getReverse(int[] list) {
