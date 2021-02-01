@@ -15,12 +15,10 @@ public class PrintStuff {
     public PrintStuff(){}
     
     //Just to format console output a little for clarities sake 
-    public static void formatter(){
-        System.out.println(" ");
-        System.out.println(" ");
+    public void formatter(){
+        newLineMaker(2);
         System.out.println("_______________________");
-        System.out.println(" ");
-        System.out.println(" ");
+        newLineMaker(2);
     }
     
     //notice for the player to check their hand
