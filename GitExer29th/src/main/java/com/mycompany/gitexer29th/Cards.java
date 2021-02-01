@@ -6,6 +6,7 @@
 package com.mycompany.gitexer29th;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -163,6 +164,16 @@ public class Cards {
         cardHand.add(value);
         return cardHand;
     }
+    
+    public HashMap<Integer, Integer> updateBooks(HashMap<Integer, Integer> books, int[][] scoreBoard){
+        for(int i = 0; i < 13; i++){
+            if(scoreBoard[i][1] >= 4){
+                books.put(scoreBoard[i][0], scoreBoard[i][1]);
+            }
+        }
+        return books; 
+    }
+    
 
     public int askForACard(int target, InputStuff input){
         boolean flag = true; 
