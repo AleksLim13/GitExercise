@@ -10,9 +10,14 @@ import java.util.Scanner;
 
 /**
  *
- * @author aleks
+ * @author Ally Cat @ Sheridan College 2021
  */
 public class InputStuff {
+    
+    public InputStuff(){}
+    
+    //Validation that would need to happen every time
+    //a double is needed from the user as input
     public double promptDoubleUser(Scanner input){
 		boolean continueInput = true;
 		double userNum = 0.0;
@@ -35,6 +40,10 @@ public class InputStuff {
 
 		return userNum;
 	}
+    
+        //Validation that would need to happen every time
+        //a integer is needed from the user as input
+    //lets put it here and just reuse it. 
 	public int promptIntUser(Scanner input){
 		boolean continueInput = true;
 		int userNum = 0;
