@@ -26,7 +26,7 @@ public class Player {
 
     //To print out the players name
     private String name;
-    //to have a score board linked specifically to a unique player
+    //To have a score board linked specifically to a unique player
     private int[][] scoreBoard;
     //Each player needs a card hand linked to them with other data.
     private ArrayList<Integer> hand;
