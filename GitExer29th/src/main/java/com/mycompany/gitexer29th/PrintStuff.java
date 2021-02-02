@@ -35,8 +35,9 @@ public class PrintStuff {
     }
     
     //The prompt to the player for a card they want
-    public void askForACard(int card){
+    public int askForACard(int card){
         System.out.println("I'm looking for a: " + card );
+        return card;
     }
     
     //message when other player doesn't have any desirables
