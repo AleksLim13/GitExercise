@@ -10,18 +10,29 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * A class to model Student Objects each student has: a name (first an last
- * name) each student can: say their name (getName)
+ * We need a way to have 
+ * a unique player we can 
+ * associate a bunch of specific
+ * game related details with. 
+ * Each instance of this class is a player
+ * and you can save details with each instance
+ * we will need to use elsewhere in the game. 
+ * It helps us pass lots of different kinds of data
+ * in one var to a method. 
  *
- * @author Ally Cat May 7, 2018
+ * @author Ally Cat @ Sheridan College 2021
  */
 public class Player {
 
+    //To print out the players name
     private String name;
+    //to have a score board linked specifically to a unique player
     private int[][] scoreBoard;
+    //Each player needs a card hand linked to them with other data.
     private ArrayList<Integer> hand;
-    private int[] book;
+    //Each player needs a way to record how many 4 of a kinds they have
     private HashMap<Integer, Integer> books = new HashMap<>();
+    //This is just for I guess pofessionalism. 
     private LocalDate date;
 
     public Player() {
@@ -32,12 +43,10 @@ public class Player {
     public Player(String name,
             int[][] scoreBoard,
             ArrayList<Integer> hand,
-            int[] book,
             HashMap<Integer, Integer> books,
             LocalDate date) {
         this.scoreBoard = scoreBoard;
         this.hand = hand;
-        this.book = book;
         this.books = books;
         this.date = date;
     }
@@ -60,9 +69,7 @@ public class Player {
         this.scoreBoard = newScoreBoard;
     }
 
-    public void setBook(int[] newBook) {
-        this.book = newBook;
-    }
+   
 
     public void setBooks(HashMap<Integer, Integer> newBooks) {
         this.books = newBooks;
@@ -80,9 +87,7 @@ public class Player {
         return scoreBoard;
     }
 
-    public int[] getBook() {
-        return book;
-    }
+   
 
     public HashMap<Integer, Integer> getBooks() {
         return books;
