@@ -74,20 +74,9 @@ public class Cards {
         return countHolder;
     }
 
-    public void printScoreBoard(int[][] scoreBoard) {
-        
-        for(int i = 0; i < 13; i++){
-             System.out.println(scoreBoard[i][0] + "'s : " + scoreBoard[i][1]);
-        }
-    }
+    
 
-    public void printCount(int[] countHolder) {
-
-        for (int i = 0; i < countHolder.length; i++) {
-
-            System.out.print(countHolder[i] + " " + "|");
-        }
-    }
+   
 
     //Simulate possibility of getting card type
     //Return actual possible type
@@ -116,11 +105,7 @@ public class Cards {
         return scoreBoard;
     }
 
-    public void printHand(ArrayList<Integer> cardHand) {
-        for (int i = 0; i < cardHand.size(); i++) {
-            System.out.print(cardHand.get(i) + " " + "|");
-        }
-    }
+    
 
     public int[][] checkHand(int[][] countHolder, ArrayList<Integer> cardHand) {
         for (int i = 0; i < cardHand.size(); i++) {
