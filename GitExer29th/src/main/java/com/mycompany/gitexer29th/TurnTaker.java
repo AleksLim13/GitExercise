@@ -99,6 +99,7 @@ public class TurnTaker {
             
              if(hasIt == true){
                  ArrayList<Integer> updatedHand = updateHand(cHand, posit);
+               
                  beginTurn(hHand, updatedHand);
                  
              }
