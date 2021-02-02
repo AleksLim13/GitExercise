@@ -5,6 +5,8 @@
  */
 package com.mycompany.gitexer29th;
 
+import java.util.HashMap;
+
 /**
  *
  * @author aleks
@@ -46,6 +48,10 @@ public class PrintStuff {
         for(int i = 0; i < howMany; i++){
             System.out.println(" ");
         }
+        
+    }
+    
+    public void declareWinner(HashMap<Integer, Integer> winner){
         
     }
     
