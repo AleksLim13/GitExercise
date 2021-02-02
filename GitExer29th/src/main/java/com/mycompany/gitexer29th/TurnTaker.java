@@ -88,39 +88,43 @@ public class TurnTaker {
         }
         
         //Prolly need a while loop and flag 
-        public void beginTurn(Player human, Player computer){
+        public void beginTurn(ArrayList<Integer> hHand, ArrayList<Integer> cHand){
          
-         int desired = 0;
-         boolean hasIt = false; 
-
+       
+         boolean hasIt = false;
          boolean flag = true;
-         while(flag){
-             desired = cardStuff.askForACard(new InputStuff());
-         
-             hasIt = cardStuff.goFish(computer, desired);
+         int desired = cardStuff.askForACard(new InputStuff());
+         hasIt = cardStuff.goFish(cHand, desired);
+         int posit = getPosition(cHand, desired);
             
-             if(hasIt == false){
-                 flag = false; 
+             if(hasIt == true){
+                 ArrayList<Integer> updatedHand = updateHand(cHand, posit);
+                 beginTurn(hHand, updatedHand);
+                 
              }
              
-         }
+             else{
+          
+                     System.out.println("Sorry, don't have that card mate");
+                 
+             }
+             
+      
         }
         
       //have to update hand but have begin turn method 
         //Needing a continuously updated hand as param
         //I want the above method to run each time with an
         //hand that's changed in response to what user asked for. 
-      public Player updateHand(Player player, int posit){
+      public ArrayList<Integer> updateHand(ArrayList<Integer> hand, int posit){
       
-          ArrayList<Integer> playerHand = player.getHand(); 
-          ArrayList<Integer> newHand = cardStuff.deleteCard(playerHand, posit); 
-          player.setHand(newHand);
-          Player updatedPlayer = player; 
-          return updatedPlayer;
+          
+          ArrayList<Integer> newHand = cardStuff.deleteCard(hand, posit); 
+          return newHand;
       }
       
-      public int getPosition(Player player, int desired){
-         int posit = cardStuff.findPosit(player, desired);
+      public int getPosition(ArrayList<Integer> hand, int desired){
+         int posit = cardStuff.findPosit(hand, desired);
       return posit;
       }
         
