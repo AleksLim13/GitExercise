@@ -70,9 +70,17 @@ public class TurnTaker {
        
         
         public void showGameDetails(Player player){
-           System.out.println(player.getName());
+            printStuff.newLineMaker(2);
+            System.out.println("Welcome to Go Fish!");
+           System.out.println(player.getName()); 
+           printStuff.newLineMaker(2);
+            System.out.println("Here is your hand...");
            printStuff.printHand(player.getHand());
+           printStuff.newLineMaker(2);
+            System.out.println("Here is your score board...");
            printStuff.printScoreBoard(player.getScoreBoard());
+           printStuff.newLineMaker(2);
+            System.out.println("Here's what you should ask for...");
            printStuff.printList(player.getDesirableList());
         }
         
