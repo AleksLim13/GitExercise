@@ -88,28 +88,40 @@ public class TurnTaker {
         }
         
         //Prolly need a while loop and flag 
-        public Player beginTurn(Player human, Player computer, Player nextPlayer){
-         boolean shouldKeepGoing = true; 
-         while(shouldKeepGoing){
-             int desired = cardStuff.askForACard(new InputStuff());
-             //Player updatedHand = cardStuff.goFish(computer, desired);
-             boolean hasIt = cardStuff.goFish(computer, desired);
-             if(hasIt == false){
-                 shouldKeepGoing = false;
-                 nextPlayer = computer; 
-             }
+        public void beginTurn(Player human, Player computer){
+         
+         int desired = 0;
+         boolean hasIt = false; 
+
+         boolean flag = true;
+         while(flag){
+             desired = cardStuff.askForACard(new InputStuff());
+         
+             hasIt = cardStuff.goFish(computer, desired);
             
+             if(hasIt == false){
+                 flag = false; 
+             }
+             
          }
-        return nextPlayer; 
         }
         
-      public Player updateHand(Player player, int card){
+      //have to update hand but have begin turn method 
+        //Needing a continuously updated hand as param
+        //I want the above method to run each time with an
+        //hand that's changed in response to what user asked for. 
+      public Player updateHand(Player player, int posit){
       
           ArrayList<Integer> playerHand = player.getHand(); 
-          ArrayList<Integer> newHand = cardStuff.deleteCard(playerHand, card); 
+          ArrayList<Integer> newHand = cardStuff.deleteCard(playerHand, posit); 
           player.setHand(newHand);
           Player updatedPlayer = player; 
           return updatedPlayer;
+      }
+      
+      public int getPosition(Player player, int desired){
+         int posit = cardStuff.findPosit(player, desired);
+      return posit;
       }
         
         
