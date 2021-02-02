@@ -67,6 +67,14 @@ public class TurnTaker {
             String humanName = inputStuff.promptStringUser(new Scanner(System.in));
             return humanName;
         }
+       
+        
+        public void showGameDetails(Player player){
+           System.out.println(player.getName());
+           printStuff.printHand(player.getHand());
+           printStuff.printScoreBoard(player.getScoreBoard());
+           printStuff.printList(player.getDesirableList());
+        }
         
         
 }//End class
