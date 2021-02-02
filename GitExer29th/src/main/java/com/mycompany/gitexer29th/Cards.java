@@ -213,10 +213,12 @@ public class Cards {
     //a opponent. It has validation for a value from 1-13(deck values)
     //and to make sure it's a number. 
     //Human player will respond to this method directly. 
-    public int askForACard(int target, InputStuff input){
+    public int askForACard(InputStuff input){
         boolean flag = true; 
-     
-        while(flag){
+        System.out.println("What card do you want");
+        int target = input.promptIntUser(new Scanner(System.in));
+        if(target < 1 || target > 13){
+            while(flag){
             System.out.println("Notice: Cards in a standard deck range from 1-13");
             target = input.promptIntUser(new Scanner(System.in));
             if(target >= 1 && target <= 13){
@@ -224,7 +226,25 @@ public class Cards {
                 return target;
             }
         } 
+        }
+        else {return target;}
+        
         return target; 
         }   
+    
+    public boolean goFish(Player player, int card){
+    
+        boolean flag = false;
+        for(int i = 0; i < 8; i++){
+            if(player.getHand().get(i) == card){
+                flag = true; 
+            }
+            else
+            {
+            flag = false; 
+            }
+        }
+        return flag;  
+    }
 
 }//End class 
