@@ -18,7 +18,7 @@ public class TurnTaker {
     
     private ArrayStuff arrayStuff; 
     private Cards cardStuff;
-    private Player player01;
+    private Player human;
     private Player computer;
     private PrintStuff printStuff; 
     private InputStuff inputStuff; 
@@ -32,14 +32,14 @@ public class TurnTaker {
         (
             ArrayStuff arrayStuff,
             Cards cardStuff,
-            Player player01,
+            Player human,
             Player computer,
             PrintStuff printStuff,
             InputStuff inputStuff
     ){
         this.arrayStuff = arrayStuff; 
         this.cardStuff = cardStuff; 
-        this.player01 = player01;
+        this.human = human;
         this.computer = computer;
         this.printStuff = printStuff; 
         this.inputStuff = inputStuff; 
@@ -102,6 +102,15 @@ public class TurnTaker {
          }
         return nextPlayer; 
         }
+        
+      public Player updateHand(Player player, int card){
+      
+          ArrayList<Integer> playerHand = player.getHand(); 
+          ArrayList<Integer> newHand = cardStuff.deleteCard(playerHand, card); 
+          player.setHand(newHand);
+          Player updatedPlayer = player; 
+          return updatedPlayer;
+      }
         
         
         
