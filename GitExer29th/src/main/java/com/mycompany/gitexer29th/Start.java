@@ -41,7 +41,7 @@ public class Start {
      turnTaker.showGameDetails(human);
      turnTaker.showGameDetails(computer);
      Cards cardStuff = new Cards();
-     
+     turnTaker.beginTurn(human.getHand(), computer.getHand());
        
     
      
@@ -65,7 +65,6 @@ public class Start {
      Player computer = turnTaker.playerSetUp(new Player());
      turnTaker.showGameDetails(human);
      turnTaker.showGameDetails(computer);
-     turnTaker.beginTurn(human.getHand(), computer.getHand());
  
     }
     
