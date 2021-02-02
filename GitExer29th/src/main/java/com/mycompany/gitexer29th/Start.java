@@ -41,6 +41,10 @@ public class Start {
      turnTaker.showGameDetails(human);
      turnTaker.showGameDetails(computer);
      turnTaker.beginTurn(human, computer, new Player());
+         
+    
+     
+     
      
     }    
     
