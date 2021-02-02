@@ -235,12 +235,12 @@ public class Cards {
     
     //This works as a check if card is in opponents hand 
     //so there turn keeps going
-    public boolean goFish(Player player, int card){
+    public boolean goFish(ArrayList<Integer> hand, int card){
     
         boolean shouldKeepGoing = false; 
-        ArrayList<Integer> targetHand = player.getHand(); 
-        for(int i = 0; i < targetHand.size(); i++){
-            if(targetHand.get(i) == card){
+        
+        for(int i = 0; i < hand.size(); i++){
+            if(hand.get(i) == card){
                 shouldKeepGoing = true;
                 return shouldKeepGoing;
             }
@@ -251,12 +251,12 @@ public class Cards {
     
     //Need to know what the index of the card need to remove 
     //from hand
-    public int findPosit(Player player, int card){
+    public int findPosit(ArrayList<Integer> hand, int card){
     
         int posit = 0; 
-        ArrayList<Integer> targetHand = player.getHand(); 
-        for(int i = 0; i < targetHand.size(); i++){
-            if(targetHand.get(i) == card){
+        
+        for(int i = 0; i < hand.size(); i++){
+            if(hand.get(i) == card){
                 posit = i;
                 return posit;
             }
