@@ -89,18 +89,16 @@ public class TurnTaker {
         
         //Prolly need a while loop and flag 
         public Player beginTurn(Player human, Player computer, Player nextPlayer){
-         boolean flag = true; 
-         while(flag){
+         boolean shouldKeepGoing = true; 
+         while(shouldKeepGoing){
              int desired = cardStuff.askForACard(new InputStuff());
+             //Player updatedHand = cardStuff.goFish(computer, desired);
              boolean hasIt = cardStuff.goFish(computer, desired);
-             if(!hasIt){
-                 flag = false;
+             if(hasIt == false){
+                 shouldKeepGoing = false;
                  nextPlayer = computer; 
              }
-             else
-             {
-             flag = true; 
-             }
+            
          }
         return nextPlayer; 
         }
