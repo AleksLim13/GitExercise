@@ -47,12 +47,21 @@ public class TurnTaker {
         
         public Player playerSetUp(Player player){
         String uName = getPlayerName();
-        player.setName(uName);
         ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<Integer>());  
         ArrayList<Integer> sortedHand = arrayStuff.sortListAsc(initialHand);
+        int[][] initialHolder = cardStuff.createScoreBoard();
+        int[][] countHolder = cardStuff.checkHand(initialHolder, sortedHand);
+        ArrayList<Integer> desirableList = cardStuff.cardDecision(countHolder, new ArrayList<Integer>());
+        
+        player.setName(uName);
         player.setHand(sortedHand);
+        player.setScoreBoard(countHolder);
+        player.setDesirableList(desirableList); 
         return player;
+        
     }
+        
+      
         
         public String getPlayerName(){
             String humanName = inputStuff.promptStringUser(new Scanner(System.in));
