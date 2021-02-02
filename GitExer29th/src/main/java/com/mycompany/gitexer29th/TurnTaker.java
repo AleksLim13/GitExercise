@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ * I guess this is like the controller in MVC architecture. 
+ * 
  * @author Ally Cat @ Sheridan College 2021
  */
 public class TurnTaker {
@@ -46,6 +47,7 @@ public class TurnTaker {
     }
         
         public Player playerSetUp(Player player){
+        //Step 1: Create the stuff
         String uName = getPlayerName();
         ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<Integer>());  
         ArrayList<Integer> sortedHand = arrayStuff.sortListAsc(initialHand);
@@ -53,6 +55,7 @@ public class TurnTaker {
         int[][] countHolder = cardStuff.checkHand(initialHolder, sortedHand);
         ArrayList<Integer> desirableList = cardStuff.cardDecision(countHolder, new ArrayList<Integer>());
         
+        //Step 2: Set the stuff 
         player.setName(uName);
         player.setHand(sortedHand);
         player.setScoreBoard(countHolder);
@@ -83,6 +86,26 @@ public class TurnTaker {
             System.out.println("Here's what you should ask for...");
            printStuff.printList(player.getDesirableList());
         }
+        
+        //Prolly need a while loop and flag 
+        public Player beginTurn(Player human, Player computer, Player nextPlayer){
+         boolean flag = true; 
+         while(flag){
+             int desired = cardStuff.askForACard(new InputStuff());
+             boolean hasIt = cardStuff.goFish(computer, desired);
+             if(!hasIt){
+                 flag = false;
+                 nextPlayer = computer; 
+             }
+             else
+             {
+             flag = true; 
+             }
+         }
+        return nextPlayer; 
+        }
+        
+        
         
         
 }//End class
