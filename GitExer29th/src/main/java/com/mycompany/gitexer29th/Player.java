@@ -34,6 +34,8 @@ public class Player {
     private HashMap<Integer, Integer> books = new HashMap<>();
     //This is just for I guess pofessionalism. 
     private LocalDate date;
+    //Holder for what to ask for
+    private ArrayList<Integer> desirableList;
 
     public Player() {
 
@@ -44,11 +46,13 @@ public class Player {
             int[][] scoreBoard,
             ArrayList<Integer> hand,
             HashMap<Integer, Integer> books,
-            LocalDate date) {
+            LocalDate date,
+            ArrayList<Integer> desirableList) {
         this.scoreBoard = scoreBoard;
         this.hand = hand;
         this.books = books;
         this.date = date;
+        this.desirableList = desirableList; 
     }
 
     /**
@@ -74,6 +78,16 @@ public class Player {
     public void setBooks(HashMap<Integer, Integer> newBooks) {
         this.books = newBooks;
     }
+    
+    
+    public void setDate(LocalDate date){
+        this.date = date; 
+    }
+    
+    public void setDesirableList(ArrayList<Integer> desirableList){
+        this.desirableList = desirableList; 
+    }
+    
 
     public String getName() {
         return name;
@@ -95,6 +109,10 @@ public class Player {
 
     public LocalDate getDate() {
         return date;
+    }
+    
+    public ArrayList<Integer> getDesirableList(){
+        return desirableList; 
     }
 
 }//End class 
