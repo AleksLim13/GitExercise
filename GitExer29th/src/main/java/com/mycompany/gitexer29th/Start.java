@@ -39,16 +39,17 @@ public class Start {
         Cards cardStuff = new Cards();
         ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<Integer>());        
         ArrayList<Integer> cardHand = arrayStuff.sortListAsc(initialHand);
+        PrintStuff printStuff = new PrintStuff(); 
         System.out.println("Your hand...");
-        cardStuff.printHand(cardHand);
+        printStuff.printHand(cardHand);
         System.out.println(" ");
         int[][] countHolder = cardStuff.createScoreBoard();
         int[][] checkedHand = cardStuff.checkHand(countHolder, cardHand);
         System.out.println("Your scoreboard...");
-        cardStuff.printScoreBoard(checkedHand);
+        printStuff.printScoreBoard(checkedHand);
         ArrayList<Integer> desirableList = cardStuff.cardDecision(checkedHand, new ArrayList<Integer>());
         System.out.println("What to ask for...");
-        cardStuff.printHand(desirableList);
+        printStuff.printHand(desirableList);
     }
     
     public void test02(){
@@ -58,7 +59,7 @@ public class Start {
         Cards cardStuff = new Cards();
         Player player01 = new Player();
         Player computer = new Player();
-        
+        PrintStuff printStuff = new PrintStuff(); 
         
         ArrayList<Integer> pOneInitialHand = cardStuff.createHand(new ArrayList<Integer>());  
         ArrayList<Integer> pOneSortedHand = arrayStuff.sortListAsc(pOneInitialHand);
@@ -79,15 +80,15 @@ public class Start {
         ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<Integer>());        
         ArrayList<Integer> cardHand = arrayStuff.sortListAsc(initialHand);
         System.out.println("Your hand...");
-        cardStuff.printHand(cardHand);
+        printStuff.printHand(cardHand);
         System.out.println(" ");
         int[][] countHolder = cardStuff.createScoreBoard();
         int[][] checkedHand = cardStuff.checkHand(countHolder, cardHand);
         System.out.println("Your scoreboard...");
-        cardStuff.printScoreBoard(checkedHand);
+        printStuff.printScoreBoard(checkedHand);
         ArrayList<Integer> desirableList = cardStuff.cardDecision(checkedHand, new ArrayList<Integer>());
         System.out.println("What to ask for...");
-        cardStuff.printHand(desirableList);
+        printStuff.printHand(desirableList);
     }
     
  
