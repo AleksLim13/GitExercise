@@ -52,8 +52,8 @@ public class PrintStuff {
         
     }
     
-    public void declareWinner(HashMap<Integer, Integer> winner){
-        
+    public void declareWinner(Player winner){
+        System.out.println("Congradulations! " + winner.getName());
     }
     
     public void printScoreBoard(int[][] scoreBoard) {
