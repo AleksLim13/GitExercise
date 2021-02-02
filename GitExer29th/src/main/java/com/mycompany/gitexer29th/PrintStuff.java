@@ -77,6 +77,12 @@ public class PrintStuff {
             System.out.print(cardHand.get(i) + " " + "|");
         }
     }
+     
+      public void printList(ArrayList<Integer> list) {
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " " + "|");
+        }
+    }
     
     
     
