@@ -27,7 +27,17 @@ public class Start {
     
     public static void main(String[] args) {
         //begin statements
-     
+     TurnTaker testObj = new TurnTaker();
+     testObj.setDependencies(
+                 new ArrayStuff(),
+                 new Cards(),
+                 new Player(),
+                 new Player(),
+                 new PrintStuff(),
+                 new InputStuff()
+     );
+     Player testPlayer = testObj.playerSetUp(new Player());
+     testObj.showGameDetails(testPlayer);
     }    
     
     
