@@ -162,10 +162,10 @@ public class Cards {
 
     //Takes value as parameter and uses it to remove that card from 
     //a simulated card hand also passed to it. 
-    public ArrayList<Integer> deleteCard(ArrayList<Integer> cardHand, int value) {
-
-        cardHand.remove(value);
-        return cardHand;
+    public ArrayList<Integer> deleteCard(ArrayList<Integer> cardHand, int posit) {
+        ArrayList<Integer> resultHand = cardHand;
+        resultHand.remove(posit);
+        return resultHand;
     }
 
     //Adds a value passed to it's card hand list also passed to it 
@@ -247,6 +247,22 @@ public class Cards {
       
         }
         return shouldKeepGoing;  
+    }
+    
+    //Need to know what the index of the card need to remove 
+    //from hand
+    public int findPosit(Player player, int card){
+    
+        int posit = 0; 
+        ArrayList<Integer> targetHand = player.getHand(); 
+        for(int i = 0; i < targetHand.size(); i++){
+            if(targetHand.get(i) == card){
+                posit = i;
+                return posit;
+            }
+      
+        }
+        return posit;  
     }
 
 }//End class 
