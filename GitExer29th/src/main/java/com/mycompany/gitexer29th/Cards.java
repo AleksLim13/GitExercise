@@ -232,18 +232,7 @@ public class Cards {
         return target; 
         }   
     
-    public Player goFishNotWorking(Player player, int card){
     
-        
-        ArrayList<Integer> targetHand = player.getHand(); 
-        for(int i = 0; i < targetHand.size(); i++){
-            if(targetHand.get(i) == card){
-                deleteCard(player.getHand(), card);
-            }
-      
-        }
-        return player;  
-    }
     //This works as a check if card is in opponents hand 
     //so there turn keeps going
     public boolean goFish(Player player, int card){
