@@ -16,6 +16,33 @@ public class InputStuff {
     
     public InputStuff(){}
     
+    //For getting users name into their player object 
+    public String promptStringUser(Scanner input){
+		boolean continueInput = true;
+		String userName = " ";
+
+		do{
+			try{
+
+			    System.out.println("Enter your name: ______");
+			    userName = input.next();
+			    continueInput = false;
+			}
+			catch (InputMismatchException ex){
+				System.out.println("Not a String like letters!");
+				input.nextLine();
+			}
+
+		}
+		while(continueInput);
+
+
+		return userName;
+	}
+    
+    
+    
+    
     //Validation that would need to happen every time
     //a double is needed from the user as input
     public double promptDoubleUser(Scanner input){
