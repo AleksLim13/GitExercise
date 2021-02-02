@@ -174,6 +174,25 @@ public class Cards {
         return books; 
     }
     
+    //compares player objects field var books. 
+    //Comparison is based on nunber of key value pairs in books 
+    public Player determineWinner(Player human, 
+                                  Player computer,
+                                  HashMap<Integer, Integer> hBook,
+                                  HashMap<Integer, Integer> cBook,
+                                  Player winner){
+         
+        if(hBook.size() > cBook.size()){
+            winner = human;
+            
+        }
+        else {
+            winner = computer; 
+        }
+        
+        return winner; 
+    }
+    
 
     public int askForACard(int target, InputStuff input){
         boolean flag = true; 
