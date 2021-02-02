@@ -10,11 +10,13 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * A class that creates an Array of Students and populates it with 5 students
- * from the current section and then iterates over the list to print each name.
+ * A class that represents tasks related to a deck of cards 
+ * utilized in a Go Fish card game.
+ * 
  *
- * @author dancye, Jan 2019
- */
+ * @author Ally Cat @ Sheridan College 2021
+
+*/
 public class Cards {
 
     public Cards() {
@@ -131,6 +133,11 @@ public class Cards {
     }
 
   
+    //This method takes the score board previously had tallies
+    //incremented every time a duplicate card value was seen.
+    //Now it will take card values with more than 1 duplicate into
+    //a array list and return it so it can be used elsewhere to
+    //simulate asking a player for a card.
     public ArrayList<Integer> cardDecision(int[][] scoreBoard, ArrayList<Integer> dupesHolder) {
            //Rows [i] and columns [j]
         for (int i = 0; i < 13; i++) {
@@ -201,7 +208,11 @@ public class Cards {
         return winner; 
     }
     
-
+    //This prompts for a card it knows about from a 
+    //Param value taken from elsewhere to simulate a card ask of 
+    //a opponent. It has validation for a value from 1-13(deck values)
+    //and to make sure it's a number. 
+    //Human player will respond to this method directly. 
     public int askForACard(int target, InputStuff input){
         boolean flag = true; 
      
