@@ -5,12 +5,59 @@
  */
 package com.mycompany.gitexer29th;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
- * @author aleks
+ * @author Ally Cat @ Sheridan College 2021
  */
 public class TurnTaker {
+    
+    
+    private ArrayStuff arrayStuff; 
+    private Cards cardStuff;
+    private Player player01;
+    private Player computer;
+    private PrintStuff printStuff; 
+    private InputStuff inputStuff; 
+                    
+                    
     public TurnTaker(){}
     
     
-}
+    
+    public void setDependencies
+        (
+            ArrayStuff arrayStuff,
+            Cards cardStuff,
+            Player player01,
+            Player computer,
+            PrintStuff printStuff,
+            InputStuff inputStuff
+    ){
+        this.arrayStuff = arrayStuff; 
+        this.cardStuff = cardStuff; 
+        this.player01 = player01;
+        this.computer = computer;
+        this.printStuff = printStuff; 
+        this.inputStuff = inputStuff; 
+        
+    }
+        
+        public Player playerSetUp(Player player){
+        String uName = getPlayerName();
+        player.setName(uName);
+        ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<Integer>());  
+        ArrayList<Integer> sortedHand = arrayStuff.sortListAsc(initialHand);
+        player.setHand(sortedHand);
+        return player;
+    }
+        
+        public String getPlayerName(){
+            String humanName = inputStuff.promptStringUser(new Scanner(System.in));
+            return humanName;
+        }
+        
+        
+}//End class
