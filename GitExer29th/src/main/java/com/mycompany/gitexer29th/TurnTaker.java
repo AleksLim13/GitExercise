@@ -154,7 +154,7 @@ public class TurnTaker {
 
     //Need official method to switch whos turn it is
     //And keep it documented. 
-    public Player turnSwitcher(Player inPlay, Player notInPlay) {
+    public ArrayList<Player> turnSwitcher(Player inPlay, Player notInPlay, ArrayList<Player> inPlayList) {
 
         //Step 1: go fish 
         //At end of turn in play player needs to go fish
@@ -169,7 +169,13 @@ public class TurnTaker {
         temp = inPlay;
         inPlay = notInPlay;
         notInPlay = temp;
-        return inPlay;
+        
+        //Add them to in play list
+        inPlayList.add(inPlay);
+        inPlayList.add(notInPlay);
+        
+        //Bring it back now 
+        return inPlayList;
     }
     
     //Start turn and record who's in play
