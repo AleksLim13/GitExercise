@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author aleks
+ * @author Ally Cat @ Sheridan College 2021
  */
 public class Start {
 
@@ -27,8 +27,14 @@ public class Start {
     
     public static void main(String[] args) {
         //begin statements
+        
     
-    TurnTaker turnTaker = new TurnTaker();
+    }    
+    
+    
+    public void test01(){
+       
+         TurnTaker turnTaker = new TurnTaker();
      turnTaker.setDependencies(
                  new ArrayStuff(),
                  new Cards(),
@@ -41,17 +47,6 @@ public class Start {
      Player computer = turnTaker.playerSetUp(new Player());
      turnTaker.showGameDetails(human);
      turnTaker.showGameDetails(computer);
-     ArrayList<Player> playerList = turnTaker.beginTurn(human, computer);
-     Player udpComp = playerList.get(0);
-     Player udpHuman = playerList.get(1);
-     turnTaker.showGameDetails(udpComp);
-     turnTaker.showGameDetails(udpHuman);
-    }    
-    
-    
-    public void test01(){
-       
-         
  
     }
     
@@ -96,6 +91,11 @@ public class Start {
      Player computer = turnTaker.playerSetUp(new Player());
      turnTaker.showGameDetails(human);
      turnTaker.showGameDetails(computer);
+     ArrayList<Player> playerList = turnTaker.beginTurn(human, computer);
+     Player udpComp = playerList.get(0);
+     Player udpHuman = playerList.get(1);
+     turnTaker.showGameDetails(udpComp);
+     turnTaker.showGameDetails(udpHuman);
     }
  
     
