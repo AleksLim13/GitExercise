@@ -55,6 +55,10 @@ public class TurnTaker {
     public Player getComp() {
         return computer;
     }
+    
+    public InputStuff getInputStuff(){
+    return inputStuff;
+    }
 
     public void setInPlay(Player newInPlay) {
         this.inPlay = newInPlay;
