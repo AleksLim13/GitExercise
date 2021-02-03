@@ -27,7 +27,26 @@ public class Start {
     
     public static void main(String[] args) {
         //begin statements
-        
+        TurnTaker turnTaker = new TurnTaker();
+     turnTaker.setDependencies(
+                 new ArrayStuff(),
+                 new Cards(),
+                 new Player(),
+                 new Player(),
+                 new Player(),
+                 new Player(),
+                 new PrintStuff(),
+                 new InputStuff()
+     );
+     Player human = turnTaker.playerSetUp(new Player());
+     Player computer = turnTaker.playerSetUp(new Player());
+     turnTaker.showGameDetails(human);
+     turnTaker.showGameDetails(computer);
+     ArrayList<Player> playerList = turnTaker.beginTurn(human, computer);
+     Player udpComp = playerList.get(0);
+     Player udpHuman = playerList.get(1);
+     turnTaker.showGameDetails(udpComp);
+     turnTaker.showGameDetails(udpHuman);
     
     }    
     
