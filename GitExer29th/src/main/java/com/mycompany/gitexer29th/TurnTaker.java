@@ -95,9 +95,12 @@ public class TurnTaker {
            printStuff.printList(player.getDesirableList());
         }
         
-        //No while loop or flag! WTF?
+        //Simulates a turn in go fish
+        //Takes 2 player objects as params
+        //Returns a list of player objects 
         public ArrayList<Player> beginTurn(Player human, Player computer){
-            
+         
+         //Step 1: setup variables needed 
          ArrayList<Integer> hHand = human.getHand();
          ArrayList<Integer> cHand = computer.getHand();
          ArrayList<Player> playerList = new ArrayList<>();
@@ -106,6 +109,8 @@ public class TurnTaker {
          hasIt = cardStuff.goFish(cHand, desired);
          int posit = getPosition(cHand, desired);
          
+        //Step 2: If opponent has card you want step inside here...
+        //Update players hands accordingly 
              if(hasIt == true){
                  ArrayList<Integer> updCompHand = cardStuff.deleteCard(cHand, posit);
                  computer.setHand(updCompHand);
@@ -119,6 +124,7 @@ public class TurnTaker {
              else{
                      System.out.println("Sorry, don't have that card mate");
              }
+            //Step 3:  return both players updated hands in here...
             return playerList;
         }
         
@@ -129,12 +135,7 @@ public class TurnTaker {
       return posit;
       }
         
-      public Player testUpdatePlayer(Player player){
-      ArrayList<Integer> testList = player.getHand();
-      testList.remove(0);
-      player.setHand(testList);
-      return player; 
-      }
+     
         
         
 }//End class
