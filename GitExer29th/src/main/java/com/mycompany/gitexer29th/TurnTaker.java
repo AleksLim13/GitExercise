@@ -42,7 +42,7 @@ public class TurnTaker {
         this.human = human;
         this.computer = computer;
         this.inPlay = inPlay;
-        this.notInPlay = notInPlay; 
+        this.notInPlay = notInPlay;
         this.printStuff = printStuff;
         this.inputStuff = inputStuff;
 
@@ -56,10 +56,26 @@ public class TurnTaker {
         return computer;
     }
 
+    public void setInPlay(Player newInPlay) {
+        this.inPlay = newInPlay;
+    }
+
+    public void setNotInPlay(Player newNotInPlay) {
+        this.notInPlay = newNotInPlay;
+    }
+
+    public Player getInPlay() {
+        return inPlay;
+    }
+
+    public Player getNotInPlay() {
+        return notInPlay;
+    }
+
     public Player playerSetUp(Player player) {
         //Step 1: Create the stuff
         String uName = getPlayerName();
-        ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<Integer>());
+        ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<>());
         ArrayList<Integer> sortedHand = arrayStuff.sortListAsc(initialHand);
         int[][] initialHolder = cardStuff.createScoreBoard();
         int[][] countHolder = cardStuff.checkHand(initialHolder, sortedHand);
@@ -103,7 +119,7 @@ public class TurnTaker {
         ArrayList<Integer> inPlHand = inPlay.getHand();
         ArrayList<Integer> notInPlHand = notInPlay.getHand();
         ArrayList<Player> playerList = new ArrayList<>();
-        boolean hasIt = false;
+        boolean hasIt;
         int desired = cardStuff.askForACard(new InputStuff());
         hasIt = cardStuff.goFish(notInPlHand, desired);
         int posit = getPosition(notInPlHand, desired);
@@ -135,6 +151,16 @@ public class TurnTaker {
     //Need official method to switch whos turn it is
     //And keep it documented. 
     public Player turnSwitcher(Player inPlay, Player notInPlay) {
+
+        //Step 1: go fish 
+        //At end of turn in play player needs to go fish
+        //Do this before switching player that's in play. 
+        ArrayList<Integer> targetHand = inPlay.getHand();
+        ArrayList<Integer> updHand = cardStuff.drawCard(targetHand);
+        ArrayList<Integer> sortedHand = arrayStuff.sortListAsc(updHand);
+        inPlay.setHand(sortedHand);
+
+        //Step 2: Switch whos in play
         Player temp;
         temp = inPlay;
         inPlay = notInPlay;
@@ -147,8 +173,8 @@ public class TurnTaker {
         String[] coin = {"heads", "tails"};
         int decision = (int) (Math.random() * 2);
         String flipped = coin[decision];
-        String result = " ";
-        if (guess == flipped) {
+        String result;
+        if (guess.equals(flipped)) {
             result = "correct";
         } else {
             result = "incorrect";
