@@ -6,11 +6,11 @@
 package com.mycompany.gitexer29th;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 /**
  *
- * @author aleks
+ * @author Ally Cat @ Sheridan College 2021
  */
 public class PrintStuff {
     
@@ -53,10 +53,12 @@ public class PrintStuff {
         
     }
     
+    //Let the player know that they won!
     public void declareWinner(Player winner){
         System.out.println("Congradulations! " + winner.getName());
     }
     
+    //print there scoreboard for strategy sake. 
     public void printScoreBoard(int[][] scoreBoard) {
         
         for(int i = 0; i < 13; i++){
@@ -64,6 +66,7 @@ public class PrintStuff {
         }
     }
     
+    //Not in usage currently 
      public void printCount(int[] countHolder) {
 
         for (int i = 0; i < countHolder.length; i++) {
@@ -72,13 +75,14 @@ public class PrintStuff {
         }
     }
      
-     
+     //Show them their hand 
      public void printHand(ArrayList<Integer> cardHand) {
         for (int i = 0; i < cardHand.size(); i++) {
             System.out.print(cardHand.get(i) + " " + "|");
         }
     }
      
+     //Generic array list printer for clarity sake 
       public void printList(ArrayList<Integer> list) {
         for (int i = 0; i < list.size(); i++) {
             System.out.print(list.get(i) + " " + "|");
