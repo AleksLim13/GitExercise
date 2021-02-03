@@ -97,6 +97,7 @@ public class TurnTaker {
         
         //No while loop or flag! WTF?
         public ArrayList<Player> beginTurn(Player human, Player computer){
+            
          ArrayList<Integer> hHand = human.getHand();
          ArrayList<Integer> cHand = computer.getHand();
          ArrayList<Player> playerList = new ArrayList<Player>();
@@ -105,8 +106,6 @@ public class TurnTaker {
          hasIt = cardStuff.goFish(cHand, desired);
          int posit = getPosition(cHand, desired);
          
-       
-            
              if(hasIt == true){
                  ArrayList<Integer> updCompHand = cardStuff.deleteCard(cHand, posit);
                  computer.setHand(updCompHand);
@@ -115,15 +114,10 @@ public class TurnTaker {
                  playerList.add(computer);
                  playerList.add(human);
                  beginTurn(human, computer);
-                 
              }
-             
              else{
-          
                      System.out.println("Sorry, don't have that card mate");
-                 
              }
-             
             return playerList;
         }
         
