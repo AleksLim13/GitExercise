@@ -61,7 +61,7 @@ public class TurnTaker {
         ArrayList<Integer> sortedHand = arrayStuff.sortListAsc(initialHand);
         int[][] initialHolder = cardStuff.createScoreBoard();
         int[][] countHolder = cardStuff.checkHand(initialHolder, sortedHand);
-        ArrayList<Integer> desirableList = cardStuff.cardDecision(countHolder, new ArrayList<Integer>());
+        ArrayList<Integer> desirableList = cardStuff.cardDecision(countHolder, new ArrayList<>());
         
         //Step 2: Set the stuff 
         player.setName(uName);
@@ -100,7 +100,7 @@ public class TurnTaker {
             
          ArrayList<Integer> hHand = human.getHand();
          ArrayList<Integer> cHand = computer.getHand();
-         ArrayList<Player> playerList = new ArrayList<Player>();
+         ArrayList<Player> playerList = new ArrayList<>();
          boolean hasIt = false;
          int desired = cardStuff.askForACard(new InputStuff());
          hasIt = cardStuff.goFish(cHand, desired);
@@ -110,7 +110,8 @@ public class TurnTaker {
                  ArrayList<Integer> updCompHand = cardStuff.deleteCard(cHand, posit);
                  computer.setHand(updCompHand);
                  ArrayList<Integer> updHumanHand = cardStuff.addCard(hHand, desired);
-                 human.setHand(updHumanHand);
+                 ArrayList<Integer> sortedHand = arrayStuff.sortListAsc(updHumanHand);
+                 human.setHand(sortedHand);
                  playerList.add(computer);
                  playerList.add(human);
                  beginTurn(human, computer);
