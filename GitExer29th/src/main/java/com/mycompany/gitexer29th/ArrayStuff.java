@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 /**
  *
- * @author aleks
+ * @author Ally Cat @ Sheridan College 2021
  */
 public class ArrayStuff {
 
@@ -19,21 +19,21 @@ public class ArrayStuff {
     }
 
     // Print all the array elements
-    public static void printElems(double[] myList) {
+    public void printElems(double[] myList) {
         for (int i = 0; i < myList.length; i++) {
             System.out.println(myList[i] + " ");
         }
     }
     
     //Print ArrayList elements 
-    public static void printListElems(ArrayList<Integer> cardList){
+    public void printListElems(ArrayList<Integer> cardList){
         for (int i = 0; i < cardList.size(); i++) {
             System.out.print(cardList.get(i) + " | ");
         }
     }
 
     // Summing all elements
-    public static double sumElems(double[] myList) {
+    public double sumElems(double[] myList) {
         double total = 0;
         for (int i = 0; i < myList.length; i++) {
             total += myList[i];
@@ -43,7 +43,7 @@ public class ArrayStuff {
     }
 
     // Finding the largest element
-    public static double findMaxy(double[] myList) {
+    public double findMaxy(double[] myList) {
         double max = myList[0];
         for (int i = 1; i < myList.length; i++) {
             if (myList[i] > max) {
@@ -57,7 +57,7 @@ public class ArrayStuff {
     
 
     //returns an array that is the reversal of another array 
-    public static int[] getReverse(int[] list) {
+    public int[] getReverse(int[] list) {
         int[] result = new int[list.length];
 
         //i < list.length is single test condition. 
@@ -76,7 +76,7 @@ public class ArrayStuff {
     //You pass this method an array initialized with values
     //and an item of the same type to search for.
     //It returns a message of yes or no.
-    public static boolean youThere(int[] holder, int target) {
+    public boolean youThere(int[] holder, int target) {
         for (int tempVar : holder) {
             if (target == tempVar) {
                 return true;
@@ -89,7 +89,7 @@ public class ArrayStuff {
     //You provide this method an array full of values
     //Then you have a value and don't know what index it is
     //You don't know it's place in the holder
-    public static int findIndex(int[] myArray, int tValue) {
+    public int findIndex(int[] myArray, int tValue) {
         if (myArray == null) {
             return -1;
         }
@@ -111,7 +111,7 @@ public class ArrayStuff {
     //The loop will start at that known slot and start
     //assigning every value in front to come back.
     //Then increment counter to mve up. 
-    public static void removeIndex(int[] myArray, int rIndex) {
+    public void removeIndex(int[] myArray, int rIndex) {
 
         for (int i = rIndex; i < myArray.length - 1; i++) {
             myArray[i] = myArray[i + 1];
@@ -120,7 +120,7 @@ public class ArrayStuff {
 
     //Copy a array passed as a parameter. 
     //Use length property to set new arrays size correclty
-    public static int[] copyArray(int[] my_array) {
+    public int[] copyArray(int[] my_array) {
         int[] new_array = new int[my_array.length];
         for (int i = 0; i < my_array.length; i++) {
             new_array[i] = my_array[i];
@@ -128,8 +128,8 @@ public class ArrayStuff {
         return new_array;
     }
     
-    public static ArrayList<Integer> copyListArray(ArrayList<Integer> targetArray) {
-        ArrayList<Integer> new_array = new ArrayList<Integer>();
+    public ArrayList<Integer> copyListArray(ArrayList<Integer> targetArray) {
+        ArrayList<Integer> new_array = new ArrayList<>();
         
         for (int i = 0; i < targetArray.size(); i++) {
             new_array.set(i, targetArray.get(i)); 
@@ -138,7 +138,7 @@ public class ArrayStuff {
     }
     
     //Insert element into a array
-    public static int[] insertEelem(int[] my_array, int pos, int value){
+    public int[] insertEelem(int[] my_array, int pos, int value){
         //First shift elements up one from spot you want to insert your element
      for(int i = my_array.length-1; i > pos; i--){
     
@@ -153,13 +153,13 @@ public class ArrayStuff {
    return my_array;
  }
     
-  public static int[] sortAscending(int[] intArray){
+  public int[] sortAscending(int[] intArray){
   //Sort the array in ascending order using two for loops  
   //Trick is to start counter at right beginning slots to allow comparison. 
   //Comparing two value that dynamically change by incrementing.
   //3 main steps to this method 
   
-  int temp = 0;   
+  int temp;   
         for (int i = 0; i < intArray.length; i++) {     
           for (int j = i+1; j <intArray.length; j++) {     
               if(intArray[i] > intArray[j]) {      //swap elements if not in order
@@ -175,9 +175,9 @@ public class ArrayStuff {
   
   //sort cards in order from small to large
   //Then return the ordered array list
-  public static ArrayList<Integer> sortListAsc(ArrayList<Integer> targetList){
+  public ArrayList<Integer> sortListAsc(ArrayList<Integer> targetList){
       
-  int temp = 0;   
+  int temp;   
         for (int i = 0; i < targetList.size(); i++) {     
           for (int j = i+1; j < targetList.size(); j++) {     
               if(targetList.get(i) > targetList.get(j)) {      //swap elements if not in order
@@ -193,9 +193,9 @@ public class ArrayStuff {
   //Array needs to be sorted ascending before comparison is made
   //Still need to split array because might be two 2's and three 5's. 
   
-  public static ArrayList<Integer> findDuplicates(int[] my_array){
+  public ArrayList<Integer> findDuplicates(int[] my_array){
    
-  ArrayList<Integer> dupes = new ArrayList<Integer>();
+  ArrayList<Integer> dupes = new ArrayList<>();
   
         for (int i = 0; i < my_array.length-1; i++)
         {
@@ -215,8 +215,8 @@ public class ArrayStuff {
   
   
   //Order target hand list ascending before doing comparison for equality. 
-  public static ArrayList<Integer> findListDupes(ArrayList<Integer> targetHand){
-      ArrayList<Integer> dupes = new ArrayList<Integer>();
+  public ArrayList<Integer> findListDupes(ArrayList<Integer> targetHand){
+      ArrayList<Integer> dupes = new ArrayList<>();
       
       for (int i = 0; i < targetHand.size()-1; i++)
         {
@@ -234,7 +234,7 @@ public class ArrayStuff {
   //2 loop design carefully setting either start point. 
   //Standard i and j counter vars
   
-  public static int compareHands(int[] array1, int[] array2){
+  public int compareHands(int[] array1, int[] array2){
      
   for (int i = 0; i < array1.length; i++)
         {
