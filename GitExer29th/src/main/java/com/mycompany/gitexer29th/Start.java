@@ -40,6 +40,8 @@ public class Start {
                  new Cards(),
                  new Player(),
                  new Player(),
+                 new Player(),
+                 new Player(),
                  new PrintStuff(),
                  new InputStuff()
      );
@@ -55,6 +57,8 @@ public class Start {
      turnTaker.setDependencies(
                  new ArrayStuff(),
                  new Cards(),
+                 new Player(),
+                 new Player(),
                  new Player(),
                  new Player(),
                  new PrintStuff(),
@@ -81,6 +85,8 @@ public class Start {
      turnTaker.setDependencies(
                  new ArrayStuff(),
                  new Cards(),
+                 new Player(),
+                 new Player(),
                  new Player(),
                  new Player(),
                  new PrintStuff(),
