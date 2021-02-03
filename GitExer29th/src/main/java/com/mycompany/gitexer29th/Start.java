@@ -10,6 +10,7 @@ C:\Users\aleks\Documents\NetBeansProjects
 package com.mycompany.gitexer29th;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 /**
@@ -22,31 +23,12 @@ public class Start {
    
 
     public Start() {
-        
+     
     }
     
     public static void main(String[] args) {
         //begin statements
-        TurnTaker turnTaker = new TurnTaker();
-     turnTaker.setDependencies(
-                 new ArrayStuff(),
-                 new Cards(),
-                 new Player(),
-                 new Player(),
-                 new Player(),
-                 new Player(),
-                 new PrintStuff(),
-                 new InputStuff()
-     );
-     Player human = turnTaker.playerSetUp(new Player());
-     Player computer = turnTaker.playerSetUp(new Player());
-     turnTaker.showGameDetails(human);
-     turnTaker.showGameDetails(computer);
-     ArrayList<Player> playerList = turnTaker.beginTurn(human, computer);
-     Player udpComp = playerList.get(0);
-     Player udpHuman = playerList.get(1);
-     turnTaker.showGameDetails(udpComp);
-     turnTaker.showGameDetails(udpHuman);
+        
     
     }    
     
@@ -120,6 +102,48 @@ public class Start {
      Player udpHuman = playerList.get(1);
      turnTaker.showGameDetails(udpComp);
      turnTaker.showGameDetails(udpHuman);
+    }
+    
+    public void test04(){
+        TurnTaker turnTaker = new TurnTaker();
+     turnTaker.setDependencies(
+                 new ArrayStuff(),
+                 new Cards(),
+                 new Player(),
+                 new Player(),
+                 new Player(),
+                 new Player(),
+                 new PrintStuff(),
+                 new InputStuff()
+     );
+     Player human = turnTaker.playerSetUp(new Player());
+     Player computer = turnTaker.playerSetUp(new Player());
+     turnTaker.showGameDetails(human);
+     turnTaker.showGameDetails(computer);
+     ArrayList<Player> playerList = turnTaker.beginTurn(human, computer);
+     Player udpComp = playerList.get(0);
+     Player udpHuman = playerList.get(1);
+     turnTaker.showGameDetails(udpComp);
+     turnTaker.showGameDetails(udpHuman);
+    }
+    
+    public void test05(){
+        TurnTaker turnTaker = new TurnTaker();
+     turnTaker.setDependencies(
+                 new ArrayStuff(),
+                 new Cards(),
+                 new Player(),
+                 new Player(),
+                 new Player(),
+                 new Player(),
+                 new PrintStuff(),
+                 new InputStuff()
+     );
+   
+     InputStuff inputStuff = turnTaker.getInputStuff();
+     String uGuess = inputStuff.promptStringUser(new Scanner(System.in)); 
+     String coinToss = turnTaker.coinToss(uGuess);
+     System.out.println(coinToss);
     }
  
     
