@@ -66,7 +66,6 @@ public class Start {
      turnTaker.showGameDetails(computer);
      //turnTaker.beginTurn(human.getHand(), computer.getHand());
      System.out.println("Testing stuff");
-     Player testUpdates = turnTaker.testUpdatePlayer(computer);
      System.out.println("After updates...");
      turnTaker.showGameDetails(computer);
     }
