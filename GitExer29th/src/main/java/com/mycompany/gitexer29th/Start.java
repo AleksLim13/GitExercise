@@ -27,7 +27,9 @@ public class Start {
     
     public static void main(String[] args) {
         //begin statements
-    TurnTaker turnTaker = new TurnTaker();
+    
+    
+     TurnTaker turnTaker = new TurnTaker();
      turnTaker.setDependencies(
                  new ArrayStuff(),
                  new Cards(),
@@ -40,12 +42,11 @@ public class Start {
      Player computer = turnTaker.playerSetUp(new Player());
      turnTaker.showGameDetails(human);
      turnTaker.showGameDetails(computer);
-     Cards cardStuff = new Cards();
-     turnTaker.beginTurn(human.getHand(), computer.getHand());
-    
-     
-         
-   
+     //turnTaker.beginTurn(human.getHand(), computer.getHand());
+     System.out.println("Testing stuff");
+     Player testUpdates = turnTaker.testUpdatePlayer(computer);
+        System.out.println("After updates...");
+   turnTaker.showGameDetails(computer);
     }    
     
     
