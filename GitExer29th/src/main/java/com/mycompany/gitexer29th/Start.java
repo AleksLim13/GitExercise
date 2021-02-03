@@ -17,6 +17,9 @@ import java.util.Scanner;
  * @author Ally Cat @ Sheridan College 2021
  */
 public class Start {
+    
+    
+    
 
     public Start() {
 
@@ -58,6 +61,7 @@ public class Start {
             System.out.println("Sorry wrong answer");
             inPlayList = turnTaker.turnStarter(computer, human, new ArrayList<>());
         }
+        
         //Set player who's in play 
         Player inPlay = inPlayList.get(0);
         Player notInPlay = inPlayList.get(1);
@@ -71,6 +75,25 @@ public class Start {
 
         //Begin turn with player in play
         ArrayList<Player> roundOneList = turnTaker.beginTurn(inPlay, notInPlay);
+        
+        //Set player who's in play 
+        inPlay = roundOneList.get(0);
+        notInPlay = roundOneList.get(1);
+        turnTaker.setInPlay(inPlay);
+        turnTaker.setNotInPlay(notInPlay);
+        
+        //Switch players in play
+        inPlayList = turnTaker.turnSwitcher(inPlay, notInPlay, new ArrayList<Player>());
+        
+        //Set player who's in play 
+        inPlay = inPlayList.get(0);
+        notInPlay = inPlayList.get(1);
+        turnTaker.setInPlay(inPlay);
+        turnTaker.setNotInPlay(notInPlay);
+        
+        
+        //Begin turn with player in play
+        ArrayList<Player> roundTwoList = turnTaker.beginTurn(inPlay, notInPlay);
 
     }
 
