@@ -46,6 +46,14 @@ public class TurnTaker {
         
     }
         
+        public Player getHuman(){
+        return human;
+        }
+        
+        public Player getComp(){
+        return computer;
+        }
+        
         public Player playerSetUp(Player player){
         //Step 1: Create the stuff
         String uName = getPlayerName();
@@ -87,20 +95,20 @@ public class TurnTaker {
            printStuff.printList(player.getDesirableList());
         }
         
-        //Prolly need a while loop and flag 
+        //No while loop or flag! WTF?
         public void beginTurn(ArrayList<Integer> hHand, ArrayList<Integer> cHand){
          
-       
+       ArrayList<Player> playerList = new ArrayList<Player>();
          boolean hasIt = false;
-         boolean flag = true;
          int desired = cardStuff.askForACard(new InputStuff());
          hasIt = cardStuff.goFish(cHand, desired);
          int posit = getPosition(cHand, desired);
+         
+       
             
              if(hasIt == true){
-                 ArrayList<Integer> updatedHand = updateHand(cHand, posit);
-               
-                 beginTurn(hHand, updatedHand);
+                 ArrayList<Integer> updCompHand = cardStuff.deleteCard(cHand, posit);
+                 beginTurn(hHand, updCompHand);
                  
              }
              
@@ -110,19 +118,10 @@ public class TurnTaker {
                  
              }
              
-      
+            
         }
         
-      //have to update hand but have begin turn method 
-        //Needing a continuously updated hand as param
-        //I want the above method to run each time with an
-        //hand that's changed in response to what user asked for. 
-      public ArrayList<Integer> updateHand(ArrayList<Integer> hand, int posit){
-      
-          
-          ArrayList<Integer> newHand = cardStuff.deleteCard(hand, posit); 
-          return newHand;
-      }
+     
       
       public int getPosition(ArrayList<Integer> hand, int desired){
          int posit = cardStuff.findPosit(hand, desired);
