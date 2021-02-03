@@ -98,7 +98,7 @@ public class TurnTaker {
         //No while loop or flag! WTF?
         public void beginTurn(ArrayList<Integer> hHand, ArrayList<Integer> cHand){
          
-       ArrayList<Player> playerList = new ArrayList<Player>();
+      
          boolean hasIt = false;
          int desired = cardStuff.askForACard(new InputStuff());
          hasIt = cardStuff.goFish(cHand, desired);
@@ -128,7 +128,12 @@ public class TurnTaker {
       return posit;
       }
         
-        
+      public Player testUpdatePlayer(Player player){
+      ArrayList<Integer> testList = player.getHand();
+      testList.remove(0);
+      player.setHand(testList);
+      return player; 
+      }
         
         
 }//End class
