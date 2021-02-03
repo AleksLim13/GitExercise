@@ -28,7 +28,49 @@ public class Start {
     
     public static void main(String[] args) {
         //begin statements
-        
+        //Test turn starter 
+        TurnTaker turnTaker = new TurnTaker();
+     turnTaker.setDependencies(
+                 new ArrayStuff(),
+                 new Cards(),
+                 new Player(),
+                 new Player(),
+                 new Player(),
+                 new Player(),
+                 new PrintStuff(),
+                 new InputStuff()
+     );
+     //Create players
+        System.out.println("Setting up players...");
+     Player human = turnTaker.playerSetUp(new Player());
+     Player computer = turnTaker.playerSetUp(new Player());
+     
+     //Start coin toss
+     InputStuff inputStuff = turnTaker.getInputStuff();
+        System.out.println("Heads or tails: ");
+     String uGuess = inputStuff.promptStringUser(new Scanner(System.in)); 
+     String coinToss = turnTaker.coinToss(uGuess);
+     System.out.println(coinToss);
+     ArrayList<Player> inPlayList; 
+     //Start turn starter 
+     if(coinToss.equals("correct")){
+         System.out.println("Your correct");
+         inPlayList = turnTaker.turnStarter(human, computer, new ArrayList<>());
+     }
+     else{
+         System.out.println("Sorry wrong answer");
+         inPlayList = turnTaker.turnStarter(computer, human, new ArrayList<>());
+     }
+     Player inPlay = inPlayList.get(0); 
+     Player notInPlay = inPlayList.get(1);
+     turnTaker.setInPlay(inPlay);
+     turnTaker.setNotInPlay(notInPlay);
+     //Print stats 
+        System.out.println("Printing stats: ");
+     turnTaker.showGameDetails(inPlay);
+     turnTaker.showGameDetails(notInPlay);
+     //Begin turn with player in play
+     ArrayList<Player> roundOneList = turnTaker.beginTurn(inPlay, notInPlay);
     
     }    
     
@@ -69,7 +111,6 @@ public class Start {
      Player computer = turnTaker.playerSetUp(new Player());
      turnTaker.showGameDetails(human);
      turnTaker.showGameDetails(computer);
-     //turnTaker.beginTurn(human.getHand(), computer.getHand());
      System.out.println("Testing stuff");
      System.out.println("After updates...");
      turnTaker.showGameDetails(computer);
@@ -128,7 +169,9 @@ public class Start {
     }
     
     public void test05(){
-        TurnTaker turnTaker = new TurnTaker();
+        //Prolly first part of game is coin toss
+        //So we know whos first in play
+     TurnTaker turnTaker = new TurnTaker();
      turnTaker.setDependencies(
                  new ArrayStuff(),
                  new Cards(),
