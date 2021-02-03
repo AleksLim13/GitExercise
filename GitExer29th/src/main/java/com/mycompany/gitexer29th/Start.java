@@ -42,7 +42,6 @@ public class Start {
      turnTaker.showGameDetails(computer);
      Cards cardStuff = new Cards();
      turnTaker.beginTurn(human.getHand(), computer.getHand());
-       
     
      
          
