@@ -164,12 +164,26 @@ public class TurnTaker {
         ArrayList<Integer> sortedHand = arrayStuff.sortListAsc(updHand);
         inPlay.setHand(sortedHand);
 
-        //Step 2: Switch whos in play
+        //Step 2: Switch who's in play
         Player temp;
         temp = inPlay;
         inPlay = notInPlay;
         notInPlay = temp;
         return inPlay;
+    }
+    
+    //Start turn and record who's in play
+    public ArrayList<Player> turnStarter(Player player01, Player player02, ArrayList<Player> playerList) {
+        
+        //Step 1: Assign who's in play
+        Player vInPlay = player01;
+        Player vNotInPlay = player02; 
+        
+        //Step 2: Add updated status to array list of players
+        playerList.add(vInPlay);//At index 0
+        playerList.add(vNotInPlay);//At index 1
+   
+        return playerList;
     }
 
     //Deciding which player goes first 
