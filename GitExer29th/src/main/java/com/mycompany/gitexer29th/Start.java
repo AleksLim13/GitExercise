@@ -39,62 +39,62 @@ public class Start {
                 new Player(),
                 new PrintStuff(),
                 new InputStuff(),
+                new ArrayList<>(),
+                new String(),
+                new String(),
                 new ArrayList<>()
         );
         //Create players
         System.out.println("Setting up players...");
-        Player human = turnTaker.playerSetUp(new Player());
-        Player computer = turnTaker.playerSetUp(new Player());
+        turnTaker.setHuman(turnTaker.playerSetUp(new Player()));
+        turnTaker.setComp(turnTaker.playerSetUp(new Player()));
 
         //Start coin toss
         InputStuff inputStuff = turnTaker.getInputStuff();
         System.out.println("Heads or tails: ");
-        String uGuess = inputStuff.promptStringUser(new Scanner(System.in));
-        String coinToss = turnTaker.coinToss(uGuess);
-        System.out.println(coinToss);
-        ArrayList<Player> inPlayList;
+        turnTaker.setGuess(inputStuff.promptStringUser(new Scanner(System.in)));
+        turnTaker.setCoinToss(turnTaker.coinToss(turnTaker.getGuess()));
+        System.out.println(turnTaker.getCoinToss());
+        
 
         //Start turn starter 
-        if (coinToss.equals("correct")) {
+        if (turnTaker.getCoinToss().equals("correct")) {
             System.out.println("Your correct");
-            inPlayList = turnTaker.turnStarter(human, computer, new ArrayList<>());
+            turnTaker.setInPlayList(turnTaker.turnStarter(turnTaker.getHuman(), turnTaker.getComp(), new ArrayList<>()));
         } else {
             System.out.println("Sorry wrong answer");
-            inPlayList = turnTaker.turnStarter(computer, human, new ArrayList<>());
+            turnTaker.setInPlayList(turnTaker.turnStarter(turnTaker.getComp(), turnTaker.getHuman(), new ArrayList<>()));
         }
         
         //Set player who's in play 
-        Player inPlay = inPlayList.get(0);
-        Player notInPlay = inPlayList.get(1);
-        turnTaker.setInPlay(inPlay);
-        turnTaker.setNotInPlay(notInPlay);
-
+        turnTaker.setInPlay(turnTaker.getInPlayList().get(0));
+        turnTaker.setNotInPlay(turnTaker.getInPlayList().get(1));//At Index 1 always not in play
+        
+      
         //Print stats 
         System.out.println("Printing stats: ");
-        turnTaker.showGameDetails(inPlay);
-        turnTaker.showGameDetails(notInPlay);
+        turnTaker.showGameDetails(turnTaker.getInPlay());
+        turnTaker.showGameDetails(turnTaker.getNotInPlay());
 
         //Begin turn with player in play
-        ArrayList<Player> roundOneList = turnTaker.beginTurn(inPlay, notInPlay);
+        turnTaker.setUpdPlayerList(turnTaker.beginTurn(turnTaker.getInPlay(), turnTaker.getNotInPlay()));
         
-        //Set player who's in play 
-        inPlay = roundOneList.get(0);
-        notInPlay = roundOneList.get(1);
-        turnTaker.setInPlay(inPlay);
-        turnTaker.setNotInPlay(notInPlay);
-        
+       
         //Switch players in play
-        inPlayList = turnTaker.turnSwitcher(inPlay, notInPlay, new ArrayList<Player>());
+        turnTaker.setInPlayList(turnTaker.turnSwitcher(turnTaker.getInPlay(), turnTaker.getNotInPlay(), new ArrayList<>()));
         
         //Set player who's in play 
-        inPlay = inPlayList.get(0);
-        notInPlay = inPlayList.get(1);
-        turnTaker.setInPlay(inPlay);
-        turnTaker.setNotInPlay(notInPlay);
+        //Set player who's in play 
+        turnTaker.setInPlay(turnTaker.getInPlayList().get(0));
+        turnTaker.setNotInPlay(turnTaker.getInPlayList().get(1));//At Index 1 always not in play
         
-        
+        //Print stats 
+        System.out.println("Printing stats: ");
+        turnTaker.showGameDetails(turnTaker.getInPlay());
+        turnTaker.showGameDetails(turnTaker.getNotInPlay());
+
         //Begin turn with player in play
-        ArrayList<Player> roundTwoList = turnTaker.beginTurn(inPlay, notInPlay);
+         turnTaker.setUpdPlayerList(turnTaker.beginTurn(turnTaker.getInPlay(), turnTaker.getNotInPlay()));
 
     }
 
@@ -110,6 +110,9 @@ public class Start {
                 new Player(),
                 new PrintStuff(),
                 new InputStuff(),
+                new ArrayList<>(),
+                new String(),
+                new String(),
                 new ArrayList<>()
         );
         Player human = turnTaker.playerSetUp(new Player());
@@ -130,6 +133,9 @@ public class Start {
                 new Player(),
                 new PrintStuff(),
                 new InputStuff(),
+                new ArrayList<>(),
+                new String(),
+                new String(),
                 new ArrayList<>()
         );
         Player human = turnTaker.playerSetUp(new Player());
@@ -157,6 +163,9 @@ public class Start {
                 new Player(),
                 new PrintStuff(),
                 new InputStuff(),
+                new ArrayList<>(),
+                new String(),
+                new String(),
                 new ArrayList<>()
         );
         Player human = turnTaker.playerSetUp(new Player());
@@ -181,6 +190,9 @@ public class Start {
                 new Player(),
                 new PrintStuff(),
                 new InputStuff(),
+                new ArrayList<>(),
+                new String(),
+                new String(),
                 new ArrayList<>()
         );
         Player human = turnTaker.playerSetUp(new Player());
@@ -207,6 +219,9 @@ public class Start {
                 new Player(),
                 new PrintStuff(),
                 new InputStuff(),
+                new ArrayList<>(),
+                new String(),
+                new String(),
                 new ArrayList<>()
         );
 
