@@ -34,8 +34,8 @@ public class Start {
 
     public static void main(String[] args) {
 
+        //Part 1: 
         Start testGame = new Start();
-
         testGame.setTurnTaker(testGame.step1_CreateTurnTaker(new TurnTaker()));
         testGame.setTurnTaker(testGame.step2_CreatePlayers(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.step3_StartCoinToss(testGame.getTurnTaker(), new InputStuff()));
@@ -43,8 +43,8 @@ public class Start {
         testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.step5_BeginFirstRound(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.updateGameStats(testGame.getTurnTaker()));
-        //Maybe add a while loop starting here...
-        //Remeber to update scoreboard and desirable list when hands change 
+        
+        //Part 2: 
         boolean flag = true;
         while (flag) {
             
@@ -141,6 +141,30 @@ public class Start {
         turnTaker.setInPlay(turnTaker.updateDesirableList(turnTaker.getInPlay()));
         turnTaker.setNotInPlay(turnTaker.updateScoreBoard(turnTaker.getNotInPlay()));
         turnTaker.setNotInPlay(turnTaker.updateDesirableList(turnTaker.getNotInPlay()));
+    }
+    
+    public void test02(){
+        //Best version so far...
+        //Part 1: 
+        Start testGame = new Start();
+        testGame.setTurnTaker(testGame.step1_CreateTurnTaker(new TurnTaker()));
+        testGame.setTurnTaker(testGame.step2_CreatePlayers(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.step3_StartCoinToss(testGame.getTurnTaker(), new InputStuff()));
+        testGame.setTurnTaker(testGame.step4_StartTurnStarter(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.step5_BeginFirstRound(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.updateGameStats(testGame.getTurnTaker()));
+        
+        //Part 2: 
+        boolean flag = true;
+        while (flag) {
+            
+            testGame.setTurnTaker(testGame.step6_SwitchWhosInPlay(testGame.getTurnTaker()));
+            testGame.setTurnTaker(testGame.updateGameStats(testGame.getTurnTaker()));
+            testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
+            testGame.setTurnTaker(testGame.step7_StartUpdGame(testGame.getTurnTaker()));
+            
+        }
     }
 
     public TurnTaker step1_CreateTurnTaker(TurnTaker turnTaker) {
