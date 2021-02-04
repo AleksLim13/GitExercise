@@ -23,6 +23,7 @@ public class TurnTaker {
     private Player notInPlay;
     private PrintStuff printStuff;
     private InputStuff inputStuff;
+    private ArrayList<Player> inPlayList;
 
     public TurnTaker() {
     }
@@ -35,7 +36,8 @@ public class TurnTaker {
             Player inPlay,
             Player notInPlay,
             PrintStuff printStuff,
-            InputStuff inputStuff
+            InputStuff inputStuff,
+            ArrayList<Player> inPlayList
     ) {
         this.arrayStuff = arrayStuff;
         this.cardStuff = cardStuff;
@@ -45,9 +47,21 @@ public class TurnTaker {
         this.notInPlay = notInPlay;
         this.printStuff = printStuff;
         this.inputStuff = inputStuff;
+        this.inPlayList = inPlayList;
 
     }
 
+    
+    //Start getters... -> 9 in total
+    
+    public ArrayStuff getArrayStuff(){
+        return arrayStuff;
+    }
+    
+    public Cards getCardStuff(){
+    return cardStuff; 
+    }
+    
     public Player getHuman() {
         return human;
     }
@@ -56,26 +70,70 @@ public class TurnTaker {
         return computer;
     }
     
+    public Player getInPlay(){
+        return inPlay;
+    }
+    
+    public Player getNotInPlay() {
+        return notInPlay;
+    }
+    
+    public PrintStuff getPrintStuff(){
+        return printStuff; 
+    }
+    
     public InputStuff getInputStuff(){
     return inputStuff;
     }
 
+    public ArrayList<Player> getInPlayList(){
+        return inPlayList; 
+    }
+    
+
+    //Start setters... -> 9 in total 
+
+  public void setArrayStuff(ArrayStuff newArrayStuff){
+      this.arrayStuff = newArrayStuff; 
+  }
+  
+  public void setcardStuff(Cards newcardStuff){
+      this.cardStuff = newcardStuff; 
+  }
+   
+  public void setHuman(Player newHuman){
+      this.human = newHuman; 
+  }
+  
+  public void setComp(Player newComp){
+      this.computer = newComp; 
+  }
+ 
     public void setInPlay(Player newInPlay) {
         this.inPlay = newInPlay;
     }
-
+    
     public void setNotInPlay(Player newNotInPlay) {
         this.notInPlay = newNotInPlay;
     }
-
-    public Player getInPlay() {
-        return inPlay;
-    }
-
-    public Player getNotInPlay() {
-        return notInPlay;
-    }
-
+    
+    public void setPrintStuff(PrintStuff newPrintStuff){
+      this.printStuff = newPrintStuff; 
+  }
+    
+    public void setInputStuff(InputStuff newInputStuff){
+      this.inputStuff = newInputStuff; 
+  }
+    
+   public void setInPlayList(ArrayList<Player> newInPlayList){
+      this.inPlayList = newInPlayList; 
+  }
+   
+   //End setters...
+    
+    
+   //Start turn related methods
+   
     public Player playerSetUp(Player player) {
         //Step 1: Create the stuff
         String uName = getPlayerName();
