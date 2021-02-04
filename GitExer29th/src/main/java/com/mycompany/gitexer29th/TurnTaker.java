@@ -25,6 +25,9 @@ public class TurnTaker {
     private PrintStuff printStuff;
     private InputStuff inputStuff;
     private ArrayList<Player> inPlayList;
+    private String guess; 
+    private String coinToss;
+    private ArrayList<Player> updPlayerList; 
 
     
     //Empty Constructor 
@@ -42,7 +45,10 @@ public class TurnTaker {
             Player notInPlay,
             PrintStuff printStuff,
             InputStuff inputStuff,
-            ArrayList<Player> inPlayList
+            ArrayList<Player> inPlayList,
+            String guess,
+            String coinToss,
+            ArrayList<Player> updPlayerList
     ) {
         this.arrayStuff = arrayStuff;
         this.cardStuff = cardStuff;
@@ -53,11 +59,13 @@ public class TurnTaker {
         this.printStuff = printStuff;
         this.inputStuff = inputStuff;
         this.inPlayList = inPlayList;
-
+        this.guess = guess;
+        this.coinToss = coinToss; 
+        this.updPlayerList = updPlayerList;
     }
 
     
-    //Start getters... -> 9 in total
+    //Start getters... -> 12 in total
     
     public ArrayStuff getArrayStuff(){
         return arrayStuff;
@@ -94,9 +102,21 @@ public class TurnTaker {
     public ArrayList<Player> getInPlayList(){
         return inPlayList; 
     }
+   
+    public String getGuess(){
+        return guess; 
+    }
+    
+    public String getCoinToss(){
+        return coinToss; 
+    }
+    
+    public ArrayList<Player> getUpdPlayerList(){
+        return updPlayerList;
+    }
     
 
-    //Start setters... -> 9 in total 
+    //Start setters... -> 12 in total 
 
   public void setArrayStuff(ArrayStuff newArrayStuff){
       this.arrayStuff = newArrayStuff; 
@@ -133,6 +153,19 @@ public class TurnTaker {
    public void setInPlayList(ArrayList<Player> newInPlayList){
       this.inPlayList = newInPlayList; 
   }
+   
+   public void setGuess(String newGuess){
+       this.guess = newGuess; 
+   }
+   
+   
+   public void setCoinToss(String newCoinToss){
+       this.coinToss = newCoinToss; 
+   }
+   
+   public void setUpdPlayerList(ArrayList<Player> newUpdPlayerList){
+       this.updPlayerList = newUpdPlayerList; 
+   }
    
    //End setters...
     
