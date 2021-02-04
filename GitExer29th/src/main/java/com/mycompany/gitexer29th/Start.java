@@ -18,15 +18,23 @@ import java.util.Scanner;
  */
 public class Start {
     
-    
+    private TurnTaker turnTaker;
     
 
     public Start() {
 
     }
+    
+    public TurnTaker getTurnTaker(){
+        return turnTaker; 
+    }
+    
+    public void setTurnTaker(TurnTaker newTurnTaker){
+     this.turnTaker = newTurnTaker; 
+    }
 
     public static void main(String[] args) {
- 
+        
         
     }
 
@@ -242,9 +250,8 @@ public class Start {
     }
     
     
-    public TurnTaker step1_CreateTurnTaker(){
+    public TurnTaker step1_CreateTurnTaker(TurnTaker turnTaker){
         //Step 1: Create turn taker object and inject dependencies 
-        TurnTaker turnTaker = new TurnTaker();
         turnTaker.setDependencies(
                 new ArrayStuff(),
                 new Cards(),
@@ -292,7 +299,20 @@ public class Start {
         return turnTaker; 
     }
     
-    public TurnTaker documentingStats(TurnTaker turnTaker){
+    public TurnTaker step5_BeginFirstRound(TurnTaker turnTaker){
+    //Step 5: Begin turn with player in play
+        turnTaker.setUpdPlayerList(turnTaker.beginTurn(turnTaker.getInPlay(), turnTaker.getNotInPlay()));
+        return turnTaker; 
+    }
+    
+    
+    public TurnTaker step6_SwitchWhosInPlay(TurnTaker turnTaker){
+    //Step 6: Switch players in play
+        turnTaker.setInPlayList(turnTaker.turnSwitcher(turnTaker.getInPlay(), turnTaker.getNotInPlay(), new ArrayList<>()));
+        return turnTaker; 
+    }
+    
+    public TurnTaker step7_DocStats(TurnTaker turnTaker){
         
         //A: Documenting: Set player who's in play 
         turnTaker.setInPlay(turnTaker.getInPlayList().get(0));
@@ -309,7 +329,7 @@ public class Start {
         return turnTaker; 
     }
     
-    public TurnTaker startUpdGame(TurnTaker turnTaker){
+    public TurnTaker step8_StartUpdGame(TurnTaker turnTaker){
         //Step 7: Begin turn with switched player in play
          turnTaker.setUpdPlayerList(turnTaker.beginTurn(turnTaker.getInPlay(), turnTaker.getNotInPlay()));
          return turnTaker; 
