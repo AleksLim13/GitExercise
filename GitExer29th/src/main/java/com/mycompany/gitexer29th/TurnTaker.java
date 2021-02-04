@@ -190,14 +190,19 @@ public class TurnTaker {
         //Step 2: If opponent has card you want step inside here...
         //Update players hands accordingly 
         if (hasIt == true) {
+            //A: Update 
             ArrayList<Integer> updNIPHand = cardStuff.deleteCard(notInPlHand, posit);
             notInPlay.setHand(updNIPHand);
+            //B: Update 
             ArrayList<Integer> updIPlHand = cardStuff.addCard(inPlHand, desired);
             ArrayList<Integer> sortedHand = arrayStuff.sortListAsc(updIPlHand);
             inPlay.setHand(sortedHand);
+            //C: Add
             playerList.add(inPlay);
             playerList.add(notInPlay);
+            //D: Restart 
             beginTurn(inPlay, notInPlay);
+            
         } else {
             System.out.println("Sorry, don't have that card mate");
         }
@@ -253,15 +258,19 @@ public class TurnTaker {
 
     //Deciding which player goes first 
     public String coinToss(String guess) {
+        //A: Create 
         String[] coin = {"heads", "tails"};
         int decision = (int) (Math.random() * 2);
+        //B: Do It
         String flipped = coin[decision];
+        //C: Evaluate
         String result;
         if (guess.equals(flipped)) {
             result = "correct";
         } else {
             result = "incorrect";
         }
+        //D: Copy
         return result;
     }
 
