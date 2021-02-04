@@ -35,6 +35,18 @@ public class Start {
 
     public static void main(String[] args) {
         
+        Start testGame = new Start();
+        
+        testGame.setTurnTaker(testGame.step1_CreateTurnTaker(new TurnTaker()));
+        testGame.setTurnTaker(testGame.step2_CreatePlayers(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.step3_StartCoinToss(testGame.getTurnTaker(), new InputStuff()));
+        testGame.setTurnTaker(testGame.step4_StartTurnStarter(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.step5_BeginFirstRound(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.step6_SwitchWhosInPlay(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.step7_StartUpdGame(testGame.getTurnTaker()));
+        
         
     }
 
