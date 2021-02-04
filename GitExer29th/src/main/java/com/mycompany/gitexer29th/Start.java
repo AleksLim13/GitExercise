@@ -38,7 +38,8 @@ public class Start {
                 new Player(),
                 new Player(),
                 new PrintStuff(),
-                new InputStuff()
+                new InputStuff(),
+                new ArrayList<>()
         );
         //Create players
         System.out.println("Setting up players...");
@@ -108,7 +109,8 @@ public class Start {
                 new Player(),
                 new Player(),
                 new PrintStuff(),
-                new InputStuff()
+                new InputStuff(),
+                new ArrayList<>()
         );
         Player human = turnTaker.playerSetUp(new Player());
         Player computer = turnTaker.playerSetUp(new Player());
@@ -127,7 +129,8 @@ public class Start {
                 new Player(),
                 new Player(),
                 new PrintStuff(),
-                new InputStuff()
+                new InputStuff(),
+                new ArrayList<>()
         );
         Player human = turnTaker.playerSetUp(new Player());
         Player computer = turnTaker.playerSetUp(new Player());
@@ -153,7 +156,8 @@ public class Start {
                 new Player(),
                 new Player(),
                 new PrintStuff(),
-                new InputStuff()
+                new InputStuff(),
+                new ArrayList<>()
         );
         Player human = turnTaker.playerSetUp(new Player());
         Player computer = turnTaker.playerSetUp(new Player());
@@ -176,7 +180,8 @@ public class Start {
                 new Player(),
                 new Player(),
                 new PrintStuff(),
-                new InputStuff()
+                new InputStuff(),
+                new ArrayList<>()
         );
         Player human = turnTaker.playerSetUp(new Player());
         Player computer = turnTaker.playerSetUp(new Player());
@@ -201,7 +206,8 @@ public class Start {
                 new Player(),
                 new Player(),
                 new PrintStuff(),
-                new InputStuff()
+                new InputStuff(),
+                new ArrayList<>()
         );
 
         InputStuff inputStuff = turnTaker.getInputStuff();
