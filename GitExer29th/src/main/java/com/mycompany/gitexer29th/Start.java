@@ -57,102 +57,17 @@ public class Start {
             
         }
 
-    }
+    }//End main
 
     public void test01(TurnTaker turnTaker) {
 
-        //Step 1: Create turn taker object and inject dependencies 
-        turnTaker = new TurnTaker();
-        turnTaker.setDependencies(
-                new ArrayStuff(),
-                new Cards(),
-                new Player(),
-                new Player(),
-                new Player(),
-                new Player(),
-                new PrintStuff(),
-                new InputStuff(),
-                new ArrayList<>(),
-                new String(),
-                new String(),
-                new ArrayList<>()
-        );
-
-        //Step 2: Create players
-        System.out.println("Setting up players...");
-        turnTaker.setHuman(turnTaker.playerSetUp(new Player()));
-        turnTaker.setComp(turnTaker.playerSetUp(new Player()));
-
-        //Step 3: Start coin toss
-        InputStuff inputStuff = turnTaker.getInputStuff();
-        System.out.println("Heads or tails: ");
-        turnTaker.setGuess(inputStuff.promptStringUser(new Scanner(System.in)));
-        turnTaker.setCoinToss(turnTaker.coinToss(turnTaker.getGuess()));
-        System.out.println(turnTaker.getCoinToss());
-
-        //Step 4: Start turn starter 
-        if (turnTaker.getCoinToss().equals("correct")) {
-            System.out.println("Your correct");
-            turnTaker.setInPlayList(turnTaker.turnStarter(turnTaker.getHuman(), turnTaker.getComp(), new ArrayList<>()));
-        } else {
-            System.out.println("Sorry wrong answer");
-            turnTaker.setInPlayList(turnTaker.turnStarter(turnTaker.getComp(), turnTaker.getHuman(), new ArrayList<>()));
-        }
-
-        //A: Documenting: Set player who's in play 
-        turnTaker.setInPlay(turnTaker.getInPlayList().get(0));
-        turnTaker.setNotInPlay(turnTaker.getInPlayList().get(1));//At Index 1 always not in play
-
-        //B: Documenting: printing stats  
-        System.out.println("Printing stats: ");
-        System.out.println("In Play: " + turnTaker.getInPlay().getName());
-        System.out.println("Not In Play: " + turnTaker.getNotInPlay().getName());
-        turnTaker.showGameDetails(turnTaker.getInPlay());
-        turnTaker.showGameDetails(turnTaker.getNotInPlay());
-
-        //Step 5: Begin turn with player in play
-        turnTaker.setUpdPlayerList(turnTaker.beginTurn(turnTaker.getInPlay(), turnTaker.getNotInPlay()));
-
-        //Add new update step here...
-        turnTaker.setInPlay(turnTaker.updateScoreBoard(turnTaker.getInPlay()));
-        turnTaker.setInPlay(turnTaker.updateDesirableList(turnTaker.getInPlay()));
-        turnTaker.setNotInPlay(turnTaker.updateScoreBoard(turnTaker.getNotInPlay()));
-        turnTaker.setNotInPlay(turnTaker.updateDesirableList(turnTaker.getNotInPlay()));
-
-        turnTaker.getNotInPlay().setHand(turnTaker.getUpdPlayerList().get(1).getHand());
-
-        //Step 6: Switch players in play
-        turnTaker.setInPlayList(turnTaker.turnSwitcher(turnTaker.getInPlay(), turnTaker.getNotInPlay(), new ArrayList<>()));
-
-        //A: Documenting: Set player who is/isn't in play 
-        turnTaker.setInPlay(turnTaker.getInPlayList().get(0));
-        turnTaker.setNotInPlay(turnTaker.getInPlayList().get(1));//At Index 1 always not in play
-
-        //B: Documenting: Print stats 
-        System.out.println("Printing stats: ");
-        System.out.println("In Play: " + turnTaker.getInPlay().getName());
-        System.out.println("Not In Play: " + turnTaker.getNotInPlay().getName());
-        turnTaker.showGameDetails(turnTaker.getInPlay());
-        turnTaker.showGameDetails(turnTaker.getNotInPlay());
-
-        //Step 7: Begin turn with switched player in play
-        turnTaker.setUpdPlayerList(turnTaker.beginTurn(turnTaker.getInPlay(), turnTaker.getNotInPlay()));
-
-        //Step 8: Repeat steps 1-7...
-        turnTaker.setInPlay(turnTaker.updateScoreBoard(turnTaker.getInPlay()));
-        turnTaker.setInPlay(turnTaker.updateDesirableList(turnTaker.getInPlay()));
-        turnTaker.setNotInPlay(turnTaker.updateScoreBoard(turnTaker.getNotInPlay()));
-        turnTaker.setNotInPlay(turnTaker.updateDesirableList(turnTaker.getNotInPlay()));
-    }
-    
-    public void test02(){
-        //Best version so far...
-        //Part 1: 
+      //Part 1: 
         Start testGame = new Start();
         testGame.setTurnTaker(testGame.step1_CreateTurnTaker(new TurnTaker()));
         testGame.setTurnTaker(testGame.step2_CreatePlayers(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.step3_StartCoinToss(testGame.getTurnTaker(), new InputStuff()));
         testGame.setTurnTaker(testGame.step4_StartTurnStarter(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.updInPlayObjects(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.step5_BeginFirstRound(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.updateGameStats(testGame.getTurnTaker()));
@@ -163,12 +78,18 @@ public class Start {
             
             testGame.setTurnTaker(testGame.step6_SwitchWhosInPlay(testGame.getTurnTaker()));
             testGame.setTurnTaker(testGame.updateGameStats(testGame.getTurnTaker()));
+            testGame.setTurnTaker(testGame.updInPlayObjects(testGame.getTurnTaker()));
             testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
             testGame.setTurnTaker(testGame.step7_StartUpdGame(testGame.getTurnTaker()));
             
         }
     }
+    
 
+    //End testeroo's
+    
+    
+    
     public TurnTaker step1_CreateTurnTaker(TurnTaker turnTaker) {
         //Step 1: Create turn taker object and inject dependencies 
         turnTaker.setDependencies(
