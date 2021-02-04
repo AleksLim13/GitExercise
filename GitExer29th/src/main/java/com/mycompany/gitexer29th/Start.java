@@ -134,28 +134,42 @@ public class Start {
                 new String(),
                 new ArrayList<>()
         );
+        
+        //Bring it back now..
         return turnTaker; 
-    }
+        
+    }//End 
     
     public TurnTaker step2_CreatePlayers(TurnTaker turnTaker){
+        
         //Step 2: Create players
         System.out.println("Setting up players...");
         turnTaker.setHuman(turnTaker.playerSetUp(new Player()));
         turnTaker.setComp(turnTaker.playerSetUp(new Player()));
+        
+        //Copy that...
         return turnTaker; 
-    }
+        
+    }//End 
     
+    //Start the coin toss as game catalyst 
     public TurnTaker step3_StartCoinToss(TurnTaker turnTaker, InputStuff inputStuff){
+        
         //Step 3: Start coin toss
         inputStuff = turnTaker.getInputStuff();
         System.out.println("Heads or tails: ");
         turnTaker.setGuess(inputStuff.promptStringUser(new Scanner(System.in)));
         turnTaker.setCoinToss(turnTaker.coinToss(turnTaker.getGuess()));
         System.out.println(turnTaker.getCoinToss());
+        
+        //Remember updates...
         return turnTaker; 
-    }
+        
+    }//End 
     
+    //After this step call printDocStats() 
     public TurnTaker step4_StartTurnStarter(TurnTaker turnTaker){
+        
     //Step 4: Start turn starter 
         if (turnTaker.getCoinToss().equals("correct")) {
             System.out.println("Your correct");
@@ -164,23 +178,35 @@ public class Start {
             System.out.println("Sorry wrong answer");
             turnTaker.setInPlayList(turnTaker.turnStarter(turnTaker.getComp(), turnTaker.getHuman(), new ArrayList<>()));
         }
+        
+        //Bring it back now...
         return turnTaker; 
-    }
+        
+    }//End 
     
+    //Get it started now
     public TurnTaker step5_BeginFirstRound(TurnTaker turnTaker){
+        
     //Step 5: Begin turn with player in play
         turnTaker.setUpdPlayerList(turnTaker.beginTurn(turnTaker.getInPlay(), turnTaker.getNotInPlay()));
+        
+        //Remember updates...
         return turnTaker; 
-    }
+        
+    }//End 
     
-    
+    //After this step call printDocStats() 
     public TurnTaker step6_SwitchWhosInPlay(TurnTaker turnTaker){
+        
     //Step 6: Switch players in play
         turnTaker.setInPlayList(turnTaker.turnSwitcher(turnTaker.getInPlay(), turnTaker.getNotInPlay(), new ArrayList<>()));
+        
+        //Copy that..
         return turnTaker; 
-    }
+        
+    }//End 
     
-    public TurnTaker step7_DocStats(TurnTaker turnTaker){
+    public TurnTaker printDocStats(TurnTaker turnTaker){
         
         //A: Documenting: Set player who's in play 
         turnTaker.setInPlay(turnTaker.getInPlayList().get(0));
@@ -197,10 +223,14 @@ public class Start {
         return turnTaker; 
     }
     
-    public TurnTaker step8_StartUpdGame(TurnTaker turnTaker){
+    public TurnTaker step7_StartUpdGame(TurnTaker turnTaker){
+        
         //Step 7: Begin turn with switched player in play
          turnTaker.setUpdPlayerList(turnTaker.beginTurn(turnTaker.getInPlay(), turnTaker.getNotInPlay()));
+         
+         //Bring it back now
          return turnTaker; 
-    }
+         
+    }//End 
 
 }//End class
