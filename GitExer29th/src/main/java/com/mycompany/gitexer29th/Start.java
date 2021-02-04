@@ -47,13 +47,12 @@ public class Start {
         //Remeber to update scoreboard and desirable list when hands change 
         boolean flag = true;
         while (flag) {
+            
             testGame.setTurnTaker(testGame.step6_SwitchWhosInPlay(testGame.getTurnTaker()));
+            testGame.setTurnTaker(testGame.updateGameStats(testGame.getTurnTaker()));
             testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
             testGame.setTurnTaker(testGame.step7_StartUpdGame(testGame.getTurnTaker()));
-            testGame.setTurnTaker(testGame.updateGameStats(testGame.getTurnTaker()));
-            //Note: addCard from Cards class being called twice when should be once...
-            //Scratch That: I'm not updating scoreboard when in play player draws a card after
-            //Their turn finishes.
+            
         }
 
     }
