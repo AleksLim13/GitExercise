@@ -40,6 +40,7 @@ public class Start {
         testGame.setTurnTaker(testGame.step2_CreatePlayers(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.step3_StartCoinToss(testGame.getTurnTaker(), new InputStuff()));
         testGame.setTurnTaker(testGame.step4_StartTurnStarter(testGame.getTurnTaker()));
+        testGame.setTurnTaker(testGame.updInPlayObjects(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.step5_BeginFirstRound(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.updateGameStats(testGame.getTurnTaker()));
@@ -50,6 +51,7 @@ public class Start {
             
             testGame.setTurnTaker(testGame.step6_SwitchWhosInPlay(testGame.getTurnTaker()));
             testGame.setTurnTaker(testGame.updateGameStats(testGame.getTurnTaker()));
+            testGame.setTurnTaker(testGame.updInPlayObjects(testGame.getTurnTaker()));
             testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
             testGame.setTurnTaker(testGame.step7_StartUpdGame(testGame.getTurnTaker()));
             
@@ -255,12 +257,19 @@ public class Start {
 
     }//End 
 
-    public TurnTaker printDocStats(TurnTaker turnTaker) {
-
+    
+    public TurnTaker updInPlayObjects(TurnTaker turnTaker){
         //A: Documenting: Set player who's in play 
         turnTaker.setInPlay(turnTaker.getInPlayList().get(0));
         turnTaker.setNotInPlay(turnTaker.getInPlayList().get(1));//At Index 1 always not in play
+        
+        //
+        return turnTaker; 
+    }
+    
+    public TurnTaker printDocStats(TurnTaker turnTaker) {
 
+   
         //B: Documenting: printing stats  
         System.out.println("Printing stats: ");
         System.out.println("In Play: " + turnTaker.getInPlay().getName());
