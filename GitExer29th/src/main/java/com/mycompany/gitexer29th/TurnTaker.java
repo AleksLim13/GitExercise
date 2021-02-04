@@ -15,6 +15,7 @@ import java.util.Scanner;
  */
 public class TurnTaker {
 
+    //Field Variables 
     private ArrayStuff arrayStuff;
     private Cards cardStuff;
     private Player human;
@@ -25,10 +26,13 @@ public class TurnTaker {
     private InputStuff inputStuff;
     private ArrayList<Player> inPlayList;
 
+    
+    //Empty Constructor 
     public TurnTaker() {
         
     }
 
+    //Dependency Injection 
     public void setDependencies(
             ArrayStuff arrayStuff,
             Cards cardStuff,
@@ -135,7 +139,9 @@ public class TurnTaker {
     
    //Start turn related methods
    
+   //Create the player and give him what he needs
     public Player playerSetUp(Player player) {
+        
         //Step 1: Create the stuff
         String uName = getPlayerName();
         ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<>());
@@ -149,6 +155,8 @@ public class TurnTaker {
         player.setHand(sortedHand);
         player.setScoreBoard(countHolder);
         player.setDesirableList(desirableList);
+        
+        //Step 3: Copy that
         return player;
 
     }
@@ -158,16 +166,22 @@ public class TurnTaker {
         return humanName;
     }
 
+    //Players need to see game details to form a strategy
     public void showGameDetails(Player player) {
+        
+        //A: Who's playing?
         printStuff.newLineMaker(2);
         System.out.println("Welcome to Go Fish!");
         System.out.println(player.getName());
+        //B: What did I get?
         printStuff.newLineMaker(2);
         System.out.println("Here is your hand...");
         printStuff.printHand(player.getHand());
+        //C: How many of each? 
         printStuff.newLineMaker(2);
         System.out.println("Here is your score board...");
         printStuff.printScoreBoard(player.getScoreBoard());
+        //D: What's good summary
         printStuff.newLineMaker(2);
         System.out.println("Here's what you should ask for...");
         printStuff.printList(player.getDesirableList());
