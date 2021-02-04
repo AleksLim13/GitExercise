@@ -25,14 +25,13 @@ public class TurnTaker {
     private PrintStuff printStuff;
     private InputStuff inputStuff;
     private ArrayList<Player> inPlayList;
-    private String guess; 
+    private String guess;
     private String coinToss;
-    private ArrayList<Player> updPlayerList; 
+    private ArrayList<Player> updPlayerList;
 
-    
     //Empty Constructor 
     public TurnTaker() {
-        
+
     }
 
     //Dependency Injection 
@@ -60,21 +59,19 @@ public class TurnTaker {
         this.inputStuff = inputStuff;
         this.inPlayList = inPlayList;
         this.guess = guess;
-        this.coinToss = coinToss; 
+        this.coinToss = coinToss;
         this.updPlayerList = updPlayerList;
     }
 
-    
     //Start getters... -> 12 in total
-    
-    public ArrayStuff getArrayStuff(){
+    public ArrayStuff getArrayStuff() {
         return arrayStuff;
     }
-    
-    public Cards getCardStuff(){
-    return cardStuff; 
+
+    public Cards getCardStuff() {
+        return cardStuff;
     }
-    
+
     public Player getHuman() {
         return human;
     }
@@ -82,99 +79,93 @@ public class TurnTaker {
     public Player getComp() {
         return computer;
     }
-    
-    public Player getInPlay(){
+
+    public Player getInPlay() {
         return inPlay;
     }
-    
+
     public Player getNotInPlay() {
         return notInPlay;
     }
-    
-    public PrintStuff getPrintStuff(){
-        return printStuff; 
-    }
-    
-    public InputStuff getInputStuff(){
-    return inputStuff;
+
+    public PrintStuff getPrintStuff() {
+        return printStuff;
     }
 
-    public ArrayList<Player> getInPlayList(){
-        return inPlayList; 
+    public InputStuff getInputStuff() {
+        return inputStuff;
     }
-   
-    public String getGuess(){
-        return guess; 
+
+    public ArrayList<Player> getInPlayList() {
+        return inPlayList;
     }
-    
-    public String getCoinToss(){
-        return coinToss; 
+
+    public String getGuess() {
+        return guess;
     }
-    
-    public ArrayList<Player> getUpdPlayerList(){
+
+    public String getCoinToss() {
+        return coinToss;
+    }
+
+    public ArrayList<Player> getUpdPlayerList() {
         return updPlayerList;
     }
-    
 
     //Start setters... -> 12 in total 
+    public void setArrayStuff(ArrayStuff newArrayStuff) {
+        this.arrayStuff = newArrayStuff;
+    }
 
-  public void setArrayStuff(ArrayStuff newArrayStuff){
-      this.arrayStuff = newArrayStuff; 
-  }
-  
-  public void setcardStuff(Cards newcardStuff){
-      this.cardStuff = newcardStuff; 
-  }
-   
-  public void setHuman(Player newHuman){
-      this.human = newHuman; 
-  }
-  
-  public void setComp(Player newComp){
-      this.computer = newComp; 
-  }
- 
+    public void setcardStuff(Cards newcardStuff) {
+        this.cardStuff = newcardStuff;
+    }
+
+    public void setHuman(Player newHuman) {
+        this.human = newHuman;
+    }
+
+    public void setComp(Player newComp) {
+        this.computer = newComp;
+    }
+
     public void setInPlay(Player newInPlay) {
         this.inPlay = newInPlay;
     }
-    
+
     public void setNotInPlay(Player newNotInPlay) {
         this.notInPlay = newNotInPlay;
     }
-    
-    public void setPrintStuff(PrintStuff newPrintStuff){
-      this.printStuff = newPrintStuff; 
-  }
-    
-    public void setInputStuff(InputStuff newInputStuff){
-      this.inputStuff = newInputStuff; 
-  }
-    
-   public void setInPlayList(ArrayList<Player> newInPlayList){
-      this.inPlayList = newInPlayList; 
-  }
-   
-   public void setGuess(String newGuess){
-       this.guess = newGuess; 
-   }
-   
-   
-   public void setCoinToss(String newCoinToss){
-       this.coinToss = newCoinToss; 
-   }
-   
-   public void setUpdPlayerList(ArrayList<Player> newUpdPlayerList){
-       this.updPlayerList = newUpdPlayerList; 
-   }
-   
-   //End setters...
-    
-    
-   //Start turn related methods
-   
-   //Create the player and give him what he needs
+
+    public void setPrintStuff(PrintStuff newPrintStuff) {
+        this.printStuff = newPrintStuff;
+    }
+
+    public void setInputStuff(InputStuff newInputStuff) {
+        this.inputStuff = newInputStuff;
+    }
+
+    public void setInPlayList(ArrayList<Player> newInPlayList) {
+        this.inPlayList = newInPlayList;
+    }
+
+    public void setGuess(String newGuess) {
+        this.guess = newGuess;
+    }
+
+    public void setCoinToss(String newCoinToss) {
+        this.coinToss = newCoinToss;
+    }
+
+    public void setUpdPlayerList(ArrayList<Player> newUpdPlayerList) {
+        this.updPlayerList = newUpdPlayerList;
+    }
+
+    //End setters...
+    //Start turn related methods
+    //Create the player and give him what he needs
     public Player playerSetUp(Player player) {
-        
+
         //Step 1: Create the stuff
         String uName = getPlayerName();
         ArrayList<Integer> initialHand = cardStuff.createHand(new ArrayList<>());
@@ -188,7 +179,7 @@ public class TurnTaker {
         player.setHand(sortedHand);
         player.setScoreBoard(countHolder);
         player.setDesirableList(desirableList);
-        
+
         //Step 3: Copy that
         return player;
 
@@ -201,7 +192,7 @@ public class TurnTaker {
 
     //Players need to see game details to form a strategy
     public void showGameDetails(Player player) {
-        
+
         //A: Who's playing?
         printStuff.newLineMaker(2);
         System.out.println("Welcome to Go Fish!");
@@ -249,7 +240,7 @@ public class TurnTaker {
             playerList.add(notInPlay);
             //D: Restart 
             beginTurn(inPlay, notInPlay);
-            
+
         } else {
             System.out.println("Sorry, don't have that card mate");
         }
@@ -280,26 +271,26 @@ public class TurnTaker {
         temp = inPlay;
         inPlay = notInPlay;
         notInPlay = temp;
-        
+
         //Add them to in play list
         inPlayList.add(inPlay);
         inPlayList.add(notInPlay);
-        
+
         //Bring it back now 
         return inPlayList;
     }
-    
+
     //Start turn and record who's in play
     public ArrayList<Player> turnStarter(Player player01, Player player02, ArrayList<Player> playerList) {
-        
+
         //Step 1: Assign who's in play
         Player vInPlay = player01;
-        Player vNotInPlay = player02; 
-        
+        Player vNotInPlay = player02;
+
         //Step 2: Add updated status to array list of players
         playerList.add(vInPlay);//At index 0
         playerList.add(vNotInPlay);//At index 1
-   
+
         return playerList;
     }
 
@@ -319,6 +310,23 @@ public class TurnTaker {
         }
         //D: Copy
         return result;
+    }
+
+    //Update score board per updated hand and return player
+    public Player updateScoreBoard(Player player) {
+        ArrayList<Integer> targetHand = player.getHand();
+        int[][] targetSB = player.getScoreBoard();
+        int[][] updSB = cardStuff.checkHand(targetSB, targetHand);
+        player.setScoreBoard(updSB);
+        return player;
+    }
+
+    //Update desirable list per updated hand and return player
+    public Player updateDesirableList(Player player) {
+        int[][] targetSB = player.getScoreBoard();
+        ArrayList<Integer> desirableList = cardStuff.cardDecision(targetSB, new ArrayList<>());
+        player.setDesirableList(desirableList);
+        return player;
     }
 
 }//End class
