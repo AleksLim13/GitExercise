@@ -42,7 +42,7 @@ public class Start {
         testGame.setTurnTaker(testGame.step4_StartTurnStarter(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.step5_BeginFirstRound(testGame.getTurnTaker()));
-        testGame.updateGameStats(testGame.getTurnTaker());
+        testGame.setTurnTaker(testGame.updateGameStats(testGame.getTurnTaker()));
         //Maybe add a while loop starting here...
         //Remeber to update scoreboard and desirable list when hands change 
         boolean flag = true;
@@ -50,7 +50,10 @@ public class Start {
             testGame.setTurnTaker(testGame.step6_SwitchWhosInPlay(testGame.getTurnTaker()));
             testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
             testGame.setTurnTaker(testGame.step7_StartUpdGame(testGame.getTurnTaker()));
-            testGame.updateGameStats(testGame.getTurnTaker());
+            testGame.setTurnTaker(testGame.updateGameStats(testGame.getTurnTaker()));
+            //Note: addCard from Cards class being called twice when should be once...
+            //Scratch That: I'm not updating scoreboard when in play player draws a card after
+            //Their turn finishes.
         }
 
     }
@@ -258,14 +261,18 @@ public class Start {
 
     //This updates scoreboard and desirable list for 
     //Player in play and not in play.
-    public void updateGameStats(TurnTaker turnTaker) {
+    public TurnTaker updateGameStats(TurnTaker turnTaker) {
+        
         //A: Player 01
         turnTaker.setInPlay(turnTaker.updateScoreBoard(turnTaker.getInPlay()));
         turnTaker.setInPlay(turnTaker.updateDesirableList(turnTaker.getInPlay()));
+        
         //B: Player 02
         turnTaker.setNotInPlay(turnTaker.updateScoreBoard(turnTaker.getNotInPlay()));
         turnTaker.setNotInPlay(turnTaker.updateDesirableList(turnTaker.getNotInPlay()));
-
+        
+        //C: Remember changes
+        return turnTaker;
     }//End 
 
 }//End class
