@@ -43,9 +43,13 @@ public class Start {
         testGame.setTurnTaker(testGame.step4_StartTurnStarter(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.step5_BeginFirstRound(testGame.getTurnTaker()));
+        testGame.updateGameStats(testGame.getTurnTaker());
+        //Maybe add a while loop starting here...
+        //Remeber to update scoreboard and desirable list when hands change 
         testGame.setTurnTaker(testGame.step6_SwitchWhosInPlay(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.printDocStats(testGame.getTurnTaker()));
         testGame.setTurnTaker(testGame.step7_StartUpdGame(testGame.getTurnTaker()));
+        testGame.updateGameStats(testGame.getTurnTaker());
         
         
     }
@@ -107,6 +111,13 @@ public class Start {
         //Step 5: Begin turn with player in play
         turnTaker.setUpdPlayerList(turnTaker.beginTurn(turnTaker.getInPlay(), turnTaker.getNotInPlay()));
         
+        //Add new update step here...
+        turnTaker.setInPlay(turnTaker.updateScoreBoard(turnTaker.getInPlay()));
+        turnTaker.setInPlay(turnTaker.updateDesirableList(turnTaker.getInPlay()));
+        turnTaker.setNotInPlay(turnTaker.updateScoreBoard(turnTaker.getNotInPlay()));
+        turnTaker.setNotInPlay(turnTaker.updateDesirableList(turnTaker.getNotInPlay()));
+        
+        turnTaker.getNotInPlay().setHand(turnTaker.getUpdPlayerList().get(1).getHand());
        
         //Step 6: Switch players in play
         turnTaker.setInPlayList(turnTaker.turnSwitcher(turnTaker.getInPlay(), turnTaker.getNotInPlay(), new ArrayList<>()));
@@ -127,6 +138,10 @@ public class Start {
          turnTaker.setUpdPlayerList(turnTaker.beginTurn(turnTaker.getInPlay(), turnTaker.getNotInPlay()));
          
          //Step 8: Repeat steps 1-7...
+        turnTaker.setInPlay(turnTaker.updateScoreBoard(turnTaker.getInPlay()));
+        turnTaker.setInPlay(turnTaker.updateDesirableList(turnTaker.getInPlay()));
+        turnTaker.setNotInPlay(turnTaker.updateScoreBoard(turnTaker.getNotInPlay()));
+        turnTaker.setNotInPlay(turnTaker.updateDesirableList(turnTaker.getNotInPlay()));
     }
     
     
@@ -243,6 +258,18 @@ public class Start {
          //Bring it back now
          return turnTaker; 
          
+    }//End 
+    
+    //This updates scoreboard and desirable list for 
+    //Player in play and not in play.
+    public void updateGameStats(TurnTaker turnTaker){
+        //A: Player 01
+        turnTaker.setInPlay(turnTaker.updateScoreBoard(turnTaker.getInPlay()));
+        turnTaker.setInPlay(turnTaker.updateDesirableList(turnTaker.getInPlay()));
+        //B: Player 02
+        turnTaker.setNotInPlay(turnTaker.updateScoreBoard(turnTaker.getNotInPlay()));
+        turnTaker.setNotInPlay(turnTaker.updateDesirableList(turnTaker.getNotInPlay()));
+        
     }//End 
 
 }//End class
