@@ -26,6 +26,7 @@ public class TurnTaker {
     private ArrayList<Player> inPlayList;
 
     public TurnTaker() {
+        
     }
 
     public void setDependencies(
@@ -194,8 +195,8 @@ public class TurnTaker {
             ArrayList<Integer> updIPlHand = cardStuff.addCard(inPlHand, desired);
             ArrayList<Integer> sortedHand = arrayStuff.sortListAsc(updIPlHand);
             inPlay.setHand(sortedHand);
-            playerList.add(notInPlay);
             playerList.add(inPlay);
+            playerList.add(notInPlay);
             beginTurn(inPlay, notInPlay);
         } else {
             System.out.println("Sorry, don't have that card mate");
