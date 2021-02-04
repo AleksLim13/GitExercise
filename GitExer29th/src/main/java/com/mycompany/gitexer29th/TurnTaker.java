@@ -315,7 +315,7 @@ public class TurnTaker {
     //Update score board per updated hand and return player
     public Player updateScoreBoard(Player player) {
         ArrayList<Integer> targetHand = player.getHand();
-        int[][] targetSB = player.getScoreBoard();
+        int[][] targetSB = cardStuff.createScoreBoard(); 
         int[][] updSB = cardStuff.checkHand(targetSB, targetHand);
         player.setScoreBoard(updSB);
         return player;
