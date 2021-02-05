@@ -173,9 +173,8 @@ public class Cards {
                 posit = findPosit(targetHand, targetSB[i][0]);
 
                 //C: Remove book values from hand
-                targetHand = deleteCard(targetHand, posit);
-                for(int j = 1; j <= 3; j++){
-                    targetHand = deleteCard(targetHand, posit + j);
+                for(int j = 0; j < 4; j++){
+                    targetHand = deleteCard(targetHand, posit);//Think about it...
                 }
                 
                 //D: Reset players updated hand 
