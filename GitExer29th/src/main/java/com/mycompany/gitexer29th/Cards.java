@@ -166,19 +166,19 @@ public class Cards {
         for (int i = 0; i < 13; i++) {
             if (targetSB[i][1] >= 4) {
 
-                //A: 
+                //A: Update books var
                 books.put(targetSB[i][0], targetSB[i][1]);
 
-                //B: 
+                //B: Get card type position
                 posit = findPosit(targetHand, targetSB[i][0]);
 
-                //C: 
+                //C: Remove book values from hand
                 targetHand = deleteCard(targetHand, posit);
-                targetHand = deleteCard(targetHand, posit + 1);
-                targetHand = deleteCard(targetHand, posit + 2);
-                targetHand = deleteCard(targetHand, posit + 3);
-
-                //D: 
+                for(int j = 1; j <= 3; j++){
+                    targetHand = deleteCard(targetHand, posit + j);
+                }
+                
+                //D: Reset players updated hand 
                 player.setHand(targetHand);
             }
         }
