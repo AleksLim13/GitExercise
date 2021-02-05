@@ -10,19 +10,18 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * A class that represents tasks related to a deck of cards 
- * utilized in a Go Fish card game.
- * 
+ * A class that represents tasks related to a deck of cards utilized in a Go
+ * Fish card game.
+ *
  *
  * @author Ally Cat @ Sheridan College 2021
-
-*/
+ *
+ */
 public class Cards {
 
     public Cards() {
     }
 
-   
     //Every call will compare each card (8) to this switch
     //And the left column in score board is values from 1-13
     //Simulating standard deck values. When each case value that
@@ -82,10 +81,6 @@ public class Cards {
         return countHolder;
     }
 
-    
-
-   
-
     //Simulate possibility of getting card type
     //Return actual possible type
     //Cards have 13 unique values * 4 in a deck
@@ -109,14 +104,13 @@ public class Cards {
     public int[][] createScoreBoard() {
         //array_name[row_index][column_index] = value;
         int[][] scoreBoard = new int[13][2];
-       
-        for(int i = 0; i < 13; i++){
+
+        for (int i = 0; i < 13; i++) {
             scoreBoard[i][0] = i + 1;
         }
         return scoreBoard;
     }
 
-    
     //Calls record types on each card and ticks the matching tallies in scoreBoard
     public int[][] checkHand(int[][] countHolder, ArrayList<Integer> cardHand) {
         for (int i = 0; i < cardHand.size(); i++) {
@@ -132,14 +126,13 @@ public class Cards {
         return cardHand;
     }
 
-  
     //This method takes the score board previously had tallies
     //incremented every time a duplicate card value was seen.
     //Now it will take card values with more than 1 duplicate into
     //a array list and return it so it can be used elsewhere to
     //simulate asking a player for a card.
     public ArrayList<Integer> cardDecision(int[][] scoreBoard, ArrayList<Integer> dupesHolder) {
-           //Rows [i] and columns [j]
+        //Rows [i] and columns [j]
         for (int i = 0; i < 13; i++) {
             if (scoreBoard[i][1] > 1) {
                 dupesHolder.add(scoreBoard[i][0]);
@@ -153,45 +146,45 @@ public class Cards {
     //card to the other player. 
     //It calls another method who knows how to delete cards from a hand
     public ArrayList<Integer> checkHandAndRemove(ArrayList<Integer> cardHand, ArrayList<Integer> dupesHolder) {
-        
+
         if (dupesHolder != null) {
             cardHand = deleteCard(cardHand, dupesHolder.get(0));
         }
         return cardHand;
     }
-    
+
     //Notice: player's hand is assumed to be ordered ascendingly already
-    public Player checkBooks(Player player){
-        
+    public Player checkBooks(Player player) {
+
         //Step 1: 
-        ArrayList<Integer> targetHand = player.getHand(); 
+        ArrayList<Integer> targetHand = player.getHand();
         int[][] targetSB = player.getScoreBoard();
         HashMap<Integer, Integer> books = player.getBooks();
-        int posit; 
-        
+        int posit;
+
         //Step 2: 
-        for(int i = 0; i < 13; i++){
-            if(targetSB[i][1] >= 4){
-                
+        for (int i = 0; i < 13; i++) {
+            if (targetSB[i][1] >= 4) {
+
                 //A: 
                 books.put(targetSB[i][0], targetSB[i][1]);
-                
+
                 //B: 
                 posit = findPosit(targetHand, targetSB[i][0]);
-                
+
                 //C: 
                 targetHand = deleteCard(targetHand, posit);
                 targetHand = deleteCard(targetHand, posit + 1);
                 targetHand = deleteCard(targetHand, posit + 2);
                 targetHand = deleteCard(targetHand, posit + 3);
-                
+
                 //D: 
                 player.setHand(targetHand);
             }
         }
-        
+
         //Step 3: 
-        return player; 
+        return player;
     }
 
     //Takes value as parameter and uses it to remove that card from 
@@ -210,93 +203,102 @@ public class Cards {
         cardHand.add(value);
         return cardHand;
     }
-    
+
     //Takes as parameter a hash map with left key as card number and
     //right value is just the 4 amount value to indicate a book was made. 
     //Returns the players book
-    public HashMap<Integer, Integer> updateBooks(HashMap<Integer, Integer> books, int[][] scoreBoard){
-        for(int i = 0; i < 13; i++){
-            if(scoreBoard[i][1] >= 4){
+    public HashMap<Integer, Integer> updateBooks(HashMap<Integer, Integer> books, int[][] scoreBoard) {
+        for (int i = 0; i < 13; i++) {
+            if (scoreBoard[i][1] >= 4) {
                 books.put(scoreBoard[i][0], scoreBoard[i][1]);
             }
         }
-        return books; 
+        return books;
     }
-    
+
     //compares player objects field var books. 
     //Comparison is based on nunber of key value pairs in books 
-    public Player determineWinner(Player human, 
-                                  Player computer,
-                                  HashMap<Integer, Integer> hBook,
-                                  HashMap<Integer, Integer> cBook,
-                                  Player winner){
-         
-        if(hBook.size() > cBook.size()){
+    public Player determineWinner(Player human,
+            Player computer,
+            HashMap<Integer, Integer> hBook,
+            HashMap<Integer, Integer> cBook,
+            Player winner) {
+
+        if (hBook.size() > cBook.size()) {
             winner = human;
-            
+
+        } else {
+            winner = computer;
         }
-        else {
-            winner = computer; 
-        }
-        
-        return winner; 
+
+        return winner;
     }
-    
+
     //This prompts for a card it knows about from a 
     //Param value taken from elsewhere to simulate a card ask of 
     //a opponent. It has validation for a value from 1-13(deck values)
     //and to make sure it's a number. 
     //Human player will respond to this method directly. 
-    public int askForACard(InputStuff input){
-        boolean flag = true; 
+    public int askForACard(InputStuff input) {
+        
+        //Step 1: 
         System.out.println("What card do you want");
         int target = input.promptIntUser(new Scanner(System.in));
-        if(target < 1 || target > 13){
-            while(flag){
-            System.out.println("Notice: Cards in a standard deck range from 1-13");
-            target = input.promptIntUser(new Scanner(System.in));
-            if(target >= 1 && target <= 13){
-                flag = false; 
-                return target;
+        
+        // Step 2:
+        boolean flag = true;
+        if (target < 1 || target > 13) {
+            while (flag) {
+                //2.2
+                System.out.println("Notice: Cards in a standard deck range from 1-13");
+                target = input.promptIntUser(new Scanner(System.in));
+                //2.3 
+                if (target >= 1 && target <= 13) {
+                    flag = false;
+                    return target;
+                }
             }
         } 
-        }
-        else {return target;}
         
-        return target; 
-        }   
-    
-    
+        //Step 3: 
+        else {
+            return target;
+        }
+
+        //Step 4:
+        return target;
+    }
+
     //This works as a check if card is in opponents hand 
     //so there turn keeps going
-    public boolean goFish(ArrayList<Integer> hand, int card){
-    
-        boolean shouldKeepGoing = false; 
-        
-        for(int i = 0; i < hand.size(); i++){
-            if(hand.get(i) == card){
+    public boolean goFish(ArrayList<Integer> hand, int card) {
+
+        boolean shouldKeepGoing = false;
+
+        for (int i = 0; i < hand.size(); i++) {
+            if (hand.get(i) == card) {
                 shouldKeepGoing = true;
                 return shouldKeepGoing;
             }
-      
+
         }
-        return shouldKeepGoing;  
+        return shouldKeepGoing;
     }
-    
+
     //Need to know what the index of the card need to remove 
     //from hand
-    public int findPosit(ArrayList<Integer> hand, int card){
-    
-        int posit = 0; 
-        
-        for(int i = 0; i < hand.size(); i++){
-            if(hand.get(i) == card){
+    public int findPosit(ArrayList<Integer> hand, int card) {
+
+        int posit = 0;
+
+        for (int i = 0; i < hand.size(); i++) {
+            if (hand.get(i) == card) {
                 posit = i;
                 return posit;
             }
-      
+
         }
-        return posit;  
+        return posit;
     }
 
 }//End class 
