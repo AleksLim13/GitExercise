@@ -159,6 +159,40 @@ public class Cards {
         }
         return cardHand;
     }
+    
+    //Notice: player's hand is assumed to be ordered ascendingly already
+    public Player checkBooks(Player player){
+        
+        //Step 1: 
+        ArrayList<Integer> targetHand = player.getHand(); 
+        int[][] targetSB = player.getScoreBoard();
+        HashMap<Integer, Integer> books = player.getBooks();
+        int posit; 
+        
+        //Step 2: 
+        for(int i = 0; i < 13; i++){
+            if(targetSB[i][1] >= 4){
+                
+                //A: 
+                books.put(targetSB[i][0], targetSB[i][1]);
+                
+                //B: 
+                posit = findPosit(targetHand, targetSB[i][0]);
+                
+                //C: 
+                targetHand = deleteCard(targetHand, posit);
+                targetHand = deleteCard(targetHand, posit + 1);
+                targetHand = deleteCard(targetHand, posit + 2);
+                targetHand = deleteCard(targetHand, posit + 3);
+                
+                //D: 
+                player.setHand(targetHand);
+            }
+        }
+        
+        //Step 3: 
+        return player; 
+    }
 
     //Takes value as parameter and uses it to remove that card from 
     //a simulated card hand also passed to it. 
